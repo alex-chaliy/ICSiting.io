@@ -108,6 +108,8 @@ body {
 	font-size: $base-font-size;
 	background-color: #eee;
 }
+@media (max-width: 320px) {body {font-size: 7px} }
+@media (max-width: 568px) {body {font-size: 12px} }
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
@@ -186,7 +188,8 @@ body, html {height: 100%;}
 }
 
 .post {
-	& .card-content {padding-bottom: 0;}
+	& .card-content {padding: 0 1.35em;}
+
 	&-image {
 		height: 13em;
 		overflow: hidden;
@@ -225,12 +228,65 @@ body, html {height: 100%;}
 	}
 }
 
-.authorBlock {}
+.authorBlock {
+	@extend .clearfix;
+	padding: .5em 1.35em;
+	&-img {
+		display: block;
+		float: left;
+		width: 2.5em;
+		height: 2.5em;
+
+		img {
+			width: 100%;
+			height: auto;
+			border-radius: 50%;
+		}
+	}
+
+	&-authorAndDate {
+		float: left;
+		padding-left: .6em;
+		padding-top: .2em;
+	}
+
+	&-name {
+		display: block;
+		line-height: 1em;
+		span {font-size: .85em;}
+	}
+	&-date {
+		display: block;
+		color: #aaa;
+		line-height: 1em;
+		span {font-size: .7em}
+	}
+
+	&-moreBtn {
+		@extend .reset-for-btn;
+		float: right;
+		position: relative;
+		right: -1em;
+		width: 2em;
+		height: 2em;
+		border-radius: 2em;
+		padding: 0;
+		&:hover {background: rgba(#000, .2);}
+
+		.material-icons {
+			font-size: 1.5em;
+			position: relative;
+			right: .15em;
+			display: table;
+			float: right;
+		}
+	}
+}
 
 .likeAndComments {
-	padding: .2em 1.35em .5em;
+	padding: .3em 1.35em .5em;
 	width: 100;
-	height: 2.5em;
+	height: 2.9em;
 	// background: #eee;
 	color: #0277bd;
 }

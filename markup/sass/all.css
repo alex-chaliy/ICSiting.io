@@ -1,9 +1,9 @@
-.reset-for-btn, .main-btn, .card-controls-btn, .btnComments {
+.reset-for-btn, .main-btn, .card-controls-btn, .authorBlock-moreBtn, .btnComments {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer; }
-  .reset-for-btn:focus, .main-btn:focus, .card-controls-btn:focus, .btnComments:focus {
+  .reset-for-btn:focus, .main-btn:focus, .card-controls-btn:focus, .authorBlock-moreBtn:focus, .btnComments:focus {
     background: transparent; }
 
 ._center, .homeSlider-itemContent .valign, .homeSlider-btn, .post .label {
@@ -31,7 +31,7 @@
 .transition, .main-btn, .card-controls-btn {
   transition: .2s; }
 
-.clearfix:after {
+.clearfix:after, .authorBlock:after {
   content: '';
   display: block;
   clear: both; }
@@ -89,6 +89,12 @@ body {
   font-size: 16px;
   background-color: #eee; }
 
+@media (max-width: 320px) {
+  body {
+    font-size: 7px; } }
+@media (max-width: 568px) {
+  body {
+    font-size: 12px; } }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-size: 1em; }
@@ -148,7 +154,7 @@ body, html {
     background-color: #64dd17; }
 
 .post .card-content {
-  padding-bottom: 0; }
+  padding: 0 1.35em; }
 .post-image {
   height: 13em;
   overflow: hidden;
@@ -178,10 +184,53 @@ body, html {
 .post .label {
   margin-bottom: .25em; }
 
+.authorBlock {
+  padding: .5em 1.35em; }
+  .authorBlock-img {
+    display: block;
+    float: left;
+    width: 2.5em;
+    height: 2.5em; }
+    .authorBlock-img img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%; }
+  .authorBlock-authorAndDate {
+    float: left;
+    padding-left: .6em;
+    padding-top: .2em; }
+  .authorBlock-name {
+    display: block;
+    line-height: 1em; }
+    .authorBlock-name span {
+      font-size: .85em; }
+  .authorBlock-date {
+    display: block;
+    color: #aaa;
+    line-height: 1em; }
+    .authorBlock-date span {
+      font-size: .7em; }
+  .authorBlock-moreBtn {
+    float: right;
+    position: relative;
+    right: -1em;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    padding: 0; }
+    .authorBlock-moreBtn:hover {
+      background: rgba(0, 0, 0, 0.2); }
+    .authorBlock-moreBtn .material-icons {
+      font-size: 1.5em;
+      position: relative;
+      right: .15em;
+      display: table;
+      float: right; }
+
 .likeAndComments {
-  padding: .2em 1.35em .5em;
+  padding: .3em 1.35em .5em;
   width: 100;
-  height: 2.5em;
+  height: 2.9em;
   color: #0277bd; }
 
 .likesBlock {

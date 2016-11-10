@@ -21,6 +21,7 @@ $btn-height: 37px;
 	border: none;
 	outline: none;
 	cursor: pointer;
+	&:focus {background: transparent;}
 }
 
 ._center {
@@ -29,6 +30,8 @@ $btn-height: 37px;
 }
 
 .txt-center {text-align: center;}
+
+.txt-shadow {text-shadow: 1px 1px 2px rgba(0,0,0, 0.3);}
 
 .txt-light {font-weight: 300;}
 .txt-regular {font-weight: 400;}
@@ -44,7 +47,7 @@ $btn-height: 37px;
 }
 
 .text-preview {
-	height: 200px;
+	height: 197px;
 	overflow: hidden;
 	position: relative;
 }
@@ -67,6 +70,7 @@ $btn-height: 37px;
 // *******************
 
 .main-title {
+	@extend .txt-shadow;
 	text-align: center;
 	text-transform: uppercase;
 	color: #0091ea;
@@ -182,8 +186,9 @@ body, html {height: 100%;}
 }
 
 .post {
+	& .card-content {padding-bottom: 0;}
 	&-image {
-		height: 11em;
+		height: 13em;
 		overflow: hidden;
 		position: relative;
 
@@ -219,6 +224,37 @@ body, html {height: 100%;}
 		margin-bottom: .25em;
 	}
 }
+
+.authorBlock {}
+
+.likeAndComments {
+	padding: .2em 1.35em .5em;
+	width: 100;
+	height: 2.5em;
+	// background: #eee;
+	color: #0277bd;
+}
+.likesBlock {
+	float: left;
+	.material-icons {font-size: 1.2em; vertical-align: text-bottom;}
+	span {font-size: .9em;}
+}
+.shareBlock {
+	float: left;
+	margin-left: 1em;
+	.material-icons {font-size: 1.2em; vertical-align: text-bottom;}
+	span {font-size: .9em;}
+}
+.btnComments {
+	@extend .reset-for-btn;
+	float: right;
+	border-bottom: 1px solid #0277bd;
+	line-height: 1em;
+	position: relative;
+	top: .1em;
+	span {font-size: .9em;}
+}
+
 .event-dateAndPlace {
 	@extend .txt-regular;
 	display: block;

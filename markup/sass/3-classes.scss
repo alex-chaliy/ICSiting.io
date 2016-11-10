@@ -3,6 +3,7 @@
 	border: none;
 	outline: none;
 	cursor: pointer;
+	&:focus {background: transparent;}
 }
 
 ._center {
@@ -11,6 +12,8 @@
 }
 
 .txt-center {text-align: center;}
+
+.txt-shadow {text-shadow: 1px 1px 2px rgba(0,0,0, 0.3);}
 
 .txt-light {font-weight: 300;}
 .txt-regular {font-weight: 400;}
@@ -26,7 +29,7 @@
 }
 
 .text-preview {
-	height: 200px;
+	height: 197px;
 	overflow: hidden;
 	position: relative;
 }
@@ -49,6 +52,7 @@
 // *******************
 
 .main-title {
+	@extend .txt-shadow;
 	text-align: center;
 	text-transform: uppercase;
 	color: #0091ea;

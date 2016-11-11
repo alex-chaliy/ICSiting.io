@@ -29,6 +29,10 @@ $btn-height: 37px;
 	margin-right: auto;
 }
 
+.upper {text-transform: uppercase;}
+.lower {text-transform: lowercase;}
+.capitalize {text-transform: capitalize;}
+
 .txt-center {text-align: center;}
 
 .txt-shadow {text-shadow: 1px 1px 2px rgba(0,0,0, 0.3);}
@@ -72,9 +76,8 @@ $btn-height: 37px;
 .main-title {
 	@extend .txt-shadow;
 	text-align: center;
-	text-transform: uppercase;
 	color: #0091ea;
-	padding: 2.5em 0 1em;
+	padding: 3.0em 0 1.5em;
 	span {font-size: 3em;}
 }
 
@@ -184,6 +187,25 @@ body, html {height: 100%;}
 		@extend ._center, .txt-bold;
 		display: table;
 		background-color: $green;
+		margin-bottom: 3em;
+	}
+
+	&-event {
+		@extend .txt-center;
+		color: #fff;
+		padding: 0 2em .5em;
+		line-height: 1.2em;
+		span {
+			font-size: .85em;
+			color: #00e5ff;
+			text-shadow: 1px 1px 2px rgba(#000, .5);
+		}
+	}
+	&-eventStatus {
+		// extend .txt-bold;
+	}
+	&-eventLink {
+		@extend .txt-bold;
 	}
 }
 
@@ -354,5 +376,89 @@ body, html {height: 100%;}
 		vertical-align: text-bottom;
 		position: relative;
 		top: 2px;
+	}
+}
+
+
+
+.card-headerTitle {
+	@extend .txt-semibold;
+	color: #333;
+	padding-bottom: .85em;
+	border-bottom: 1px solid #cecece;
+	span {font-size: 1.2em;}
+}
+
+.card-headerInput {
+	padding-top: 1em;
+
+	label {
+		display: block;	
+		margin-bottom: .5em;
+		span {font-size: 1.2em;}
+	}
+	input {
+		@include box-sizing(border-box);
+		padding-left: 1em;
+		padding-right: 1em;
+		margin: 0;
+		border-bottom: none;
+		background: #eee;
+		&:focus {background: #fff;}
+	}
+}
+
+.userPreview {
+	@extend .clearfix;
+	position: relative;
+	margin-top: 1.4em;
+	padding-top: 1em;
+	border-bottom: 1px solid #cecece;
+	padding-bottom: 1em;
+
+	&-img {
+		position: absolute;
+		top: 1em;
+		left: 0;
+		display: block;
+		float: left;
+		width: 3.5em;
+		height: 3.5em;
+
+		img {
+			width: 100%;
+			height: auto;
+			border-radius: 50%;
+		}
+	}
+
+	&-info {
+		width: 100%;
+		padding-left: 4.3em;
+	}
+
+	&-name {
+		display: block;
+		line-height: 1em;
+		padding-bottom: .5em;
+
+		span {font-size: 1.2em;}
+	}
+
+	&-param {
+		line-height: 1em;
+		padding-bottom: .5em;
+
+		span {
+			font-size: .9em;
+			color: #aaa;
+		}
+		.param-value {	
+			@extend .txt-semibold;
+			color: #333;
+		}
+		a.param-value {	
+			color: #333;
+		}
 	}
 }

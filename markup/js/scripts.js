@@ -60,7 +60,7 @@ let slider = {
 	config: {
 		sliderWidth: (slides.length * 100) + '%',
 		slideWidth: (100 / slides.length) + '%',
-		periodToNext: 4000,
+		periodToNext: 5000,
 		duration: 1000
 	},
 	render: () => {
@@ -92,7 +92,6 @@ let slider = {
 			slider.slideNumber = 0;
 			left = 0;
 		}
-		//if ( currentPosition === '-' + slider.sliderWidth ) left = 0;
 		homeSlider.animate({
 			'left': left
 		}, slider.config.duration);

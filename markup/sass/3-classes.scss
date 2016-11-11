@@ -11,6 +11,10 @@
 	margin-right: auto;
 }
 
+.upper {text-transform: uppercase;}
+.lower {text-transform: lowercase;}
+.capitalize {text-transform: capitalize;}
+
 .txt-center {text-align: center;}
 
 .txt-shadow {text-shadow: 1px 1px 2px rgba(0,0,0, 0.3);}
@@ -54,9 +58,8 @@
 .main-title {
 	@extend .txt-shadow;
 	text-align: center;
-	text-transform: uppercase;
 	color: #0091ea;
-	padding: 2.5em 0 1em;
+	padding: 3.0em 0 1.5em;
 	span {font-size: 3em;}
 }
 

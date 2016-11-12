@@ -56,14 +56,17 @@
 // *******************
 
 .main-title {
-	@extend .txt-shadow;
-	text-align: center;
+	@extend .txt-shadow, .txt-center;
 	color: #0091ea;
 	padding: 3.0em 0 1.5em;
 	span {font-size: 3em; line-height: 1em;}
 }
 
-.main-subtitle {}
+.main-subtitle {
+	@extend .txt-shadow, .txt-center;
+	padding: 1em 0 .8em;
+	span {font-size: 1.5em;}
+}
 
 .main-input {}
 .main-input:focus {}

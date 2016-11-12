@@ -2,11 +2,11 @@
 $greenLight: #ccff90; // title 'Интеллект'
 $green: #64dd17; // button 'News ICS'
 
-$limeLight: #f4ff81; // title 'Квалификация'
-$lime: #aeea00; // button 'Search Groupmates'
+$yelloLight: #f4ff81; // title 'Квалификация'
+$orange: #ffab00; // button 'Search Groupmates'
 
 $marineLight: #b9f6ca; // title 'Совершенство'
-$marine: #00c853; // button 'News IT'
+$skyBlue: #0091ea; // button 'News IT'
 
 // others
 $btn-height: 37px;
@@ -78,7 +78,7 @@ $btn-height: 37px;
 	text-align: center;
 	color: #0091ea;
 	padding: 3.0em 0 1.5em;
-	span {font-size: 3em;}
+	span {font-size: 3em; line-height: 1em;}
 }
 
 .main-subtitle {}
@@ -242,6 +242,15 @@ body, html {height: 100%;}
 		padding: 0 .3em;
 		line-height: 1.3em;
 		span {font-size: 1.3em;}
+	}
+
+	&-tags {
+		// padding: 0 1.35em;
+	}
+	&-tag {
+		color: #aaa;
+		font-style: italic;
+		span {font-size: .8em;}
 	}
 
 	.label {
@@ -440,7 +449,7 @@ body, html {height: 100%;}
 	&-name {
 		display: block;
 		line-height: 1em;
-		padding-bottom: .5em;
+		padding-bottom: .8em;
 
 		span {font-size: 1.2em;}
 	}
@@ -450,7 +459,7 @@ body, html {height: 100%;}
 		padding-bottom: .5em;
 
 		span {
-			font-size: .9em;
+			font-size: .85em;
 			color: #aaa;
 		}
 		.param-value {	

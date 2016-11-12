@@ -60,7 +60,7 @@ let slider = {
 	config: {
 		sliderWidth: (slides.length * 100) + '%',
 		slideWidth: (100 / slides.length) + '%',
-		periodToNext: 5000,
+		periodToNext: 7000,
 		duration: 1000
 	},
 	render: () => {

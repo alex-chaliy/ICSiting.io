@@ -68,7 +68,8 @@
   color: #0091ea;
   padding: 3.0em 0 1.5em; }
   .main-title span {
-    font-size: 3em; }
+    font-size: 3em;
+    line-height: 1em; }
 
 .main-btn, .card-controls-btn {
   background: #0091ea;
@@ -198,6 +199,11 @@ body, html {
   line-height: 1.3em; }
   .post-title span {
     font-size: 1.3em; }
+.post-tag {
+  color: #aaa;
+  font-style: italic; }
+  .post-tag span {
+    font-size: .8em; }
 .post .label {
   margin-bottom: .25em; }
 
@@ -374,14 +380,14 @@ body, html {
   .userPreview-name {
     display: block;
     line-height: 1em;
-    padding-bottom: .5em; }
+    padding-bottom: .8em; }
     .userPreview-name span {
       font-size: 1.2em; }
   .userPreview-param {
     line-height: 1em;
     padding-bottom: .5em; }
     .userPreview-param span {
-      font-size: .9em;
+      font-size: .85em;
       color: #aaa; }
     .userPreview-param .param-value {
       color: #333; }

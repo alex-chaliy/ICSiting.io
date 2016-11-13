@@ -9,7 +9,7 @@ var Config = {
 	db: {
 		adress: 'localhost',
 		port: '27017',
-		name: 'ICS'
+		name: 'test'
 	}
 };
 

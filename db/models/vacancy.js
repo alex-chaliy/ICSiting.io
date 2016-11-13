@@ -7,6 +7,6 @@ const VacancySchema = new Schema({
 	
 });
 
-const Vacancy = mongoose.model('Vacancy', UserSchema);
+const Vacancy = mongoose.model('Vacancy', VacancySchema);
 
 module.exports = Vacancy;

@@ -10,6 +10,6 @@ const PostSchema = new Schema({
 	parts: [String]
 });
 
-const Post = mongoose.model('Post', UserSchema);
+const Post = mongoose.model('Post', PostSchema);
 
 module.exports = Post;

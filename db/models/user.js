@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-	login: String,
+	login: { type:String, unique: true, required: true, dropDups: true },
 	password_hash: String,
 	registration_date: { type: Date, default: Date.now },
 	name: String,

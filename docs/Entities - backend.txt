@@ -10,6 +10,22 @@
 	User - Subject --- one to many
 ************************
 
+MainPages - список сообществ, новости которых будут выводится на главной странице и в разделе новостей
+{
+	"_id": "hf6hg5hfg56",
+	"pages": [
+		{
+			"titleOnHomePage": "Новости ИКСа",
+			page_id": "ghjhj445gj"
+		},
+		{
+			"titleOnHomePage": "Новости в IT",
+			page_id": "12jgh4563z"
+		}
+	]
+	language_id: "4534chfg"
+}
+
 Page
 {
 	"_id": "46df45g6dg4df6",
@@ -27,6 +43,7 @@ Pages_Posts {
 Post
 {
 	_id: 'sfsd6f4s6d',
+	language_id: "4534chfg",
 	title: 'Відкриття 15-ї обласної науково-практичної конференції Одеського територіального відділення Малої академії наук',
 	coverImg: 'http://ics.opu.ua/uploads/img/cover_56hk5gj.jpg',
 

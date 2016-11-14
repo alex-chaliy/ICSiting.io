@@ -100,7 +100,7 @@ Department
 {
 	"_id": "mklk4535kl434fghgh",
 	"fullName": "Компьютерные науки и информационные технологии",
-	"middleName": "Компьютерные науки"
+	"middleName": "Компьютерные науки",
 	"shortName": "АИ"
 },
 

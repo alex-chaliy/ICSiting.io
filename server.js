@@ -118,7 +118,7 @@ db.once('open', () => {
 		});
 	});
 
-	app.get('/user', function(request, response) {
+	app.get('/users', function(request, response) {
 
 		console.log('\nAsking for all users');
 

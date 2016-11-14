@@ -7,38 +7,8 @@
 	User - Vacancy --- one to many
 	User - Cathedra --- many to one
 	Catedra - Subject --- one to many
-	User - Subject --- one to many
+	User - Subject --- many to many
 ************************
-
-MainPages - список сообществ, новости которых будут выводится на главной странице и в разделе новостей
-{
-	"_id": "hf6hg5hfg56",
-	"pages": [
-		{
-			"titleOnHomePage": "Новости ИКСа",
-			page_id": "ghjhj445gj"
-		},
-		{
-			"titleOnHomePage": "Новости в IT",
-			page_id": "12jgh4563z"
-		}
-	]
-	language_id: "4534chfg"
-}
-
-Page
-{
-	"_id": "46df45g6dg4df6",
-	"type": "comunity",
-	"type": "userpage",
-	"creator_id": "sdd5fsdfsf6"
-}
-
-Pages_Posts {
-	"_id": "sd6fssfd",
-	"page_id": "65sf4s6df4d6f6",
-	"post_id": "sfsd6f4s6d"
-}
 
 Post
 {

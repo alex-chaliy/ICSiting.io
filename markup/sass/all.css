@@ -269,8 +269,7 @@ body, html {
     font-size: .9em; }
 
 .shareBlock {
-  float: left;
-  margin-left: 1em; }
+  float: left; }
   .shareBlock .material-icons {
     font-size: 1.2em;
     vertical-align: text-bottom; }

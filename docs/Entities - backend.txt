@@ -26,9 +26,9 @@ Post
 	],
 	"parts": [
 		"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		"img=[Image title](http://ics.opu.ua/uploads/img/ghfghghfgh.jpg)",
-		"link=[Text of link](https://www.google.com)",
-		"video=[Video title](https://www.youtube.com/watch?v=N4mEzFDjqtA)",
+		"img=[image_title](http://ics.opu.ua/uploads/img/ghfghghfgh.jpg)",
+		"link=[link_title](https://www.google.com)",
+		"video=[video_title](https://www.youtube.com/watch?v=N4mEzFDjqtA)",
 		"h1=Some First Level Header",
 		"h2=Some Second Level Header",
 		"h3=Some Third Level Header",
@@ -53,8 +53,7 @@ Post
 User
 {
 	"_id": "46df45g6dg4df6",
-	"page_id": "65sf4s6df4d6f6",
-	"firstname": "Борис",
+	"name": "Борис",
 	"secondname": "Григорьевич",
 	"surname": "Довженко",
 	"city": "Одесса",
@@ -68,20 +67,23 @@ User
 			"link": "https://goo.gl/DOz5Z1",
 			"title": "Alex Chaliy Resume"
 		},
-		"lookingForJob": "false",
+		"company": "Luxoft",
+		"position": "Junior Java Developer"
 	},
 
 	"teacherData": {
-		"cathedra_id": "mklk4535kl434fghgh",
+		"department_id": "mklk4535kl434fghgh",
 	},
 	"educations": [{
 		"status": "student",
-		"group": "АИ-141",
-		"course": "3",
+		"university": "Водный",
+		"institute": "АВБ",
+		"department": "Название Кафедры"
+
 		"entryYear": "2014",
 		"graduateYear": "2018",
 
-		"cathedra_id": "mklk4535kl434fghgh"
+		"department_id": "mklk4535kl434fghgh"
 	}]
 }
 
@@ -94,7 +96,7 @@ Vacancy
 	"link" "http://ics.opu.ua/vacancies?v_id=fgjgh54245ghj"
 }
 
-Сathedra
+Department
 {
 	"_id": "mklk4535kl434fghgh",
 	"fullName": "Компьютерные науки и информационные технологии",
@@ -106,7 +108,7 @@ Subject
 {
 	"_id": "xc6v4xc646x6vx",
 
-	"cathedra_id": "mklk4535kl434fghgh",
+	"department_id": "mklk4535kl434fghgh",
 
 	"teacher_id": "46df45g6dg4df6",
 

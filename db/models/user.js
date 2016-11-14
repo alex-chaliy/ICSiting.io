@@ -10,12 +10,33 @@ const UserSchema = new Schema({
 	name: String,
 	surname: String,
 	second_name: String,
-	department: String,
 	groupe: String,
-	entering_year: Date,
-	graduation_year: Date,
-	company: String,
 	city: String,
+	contacs: {
+		skype: String,
+		phone: String,
+		email: String
+	},
+	job: {
+		resume: {
+			link: String,
+			title: String
+		},
+		company: String,
+		position: String
+	},
+	techerData: {
+		department_id: String,
+	},
+	education: [{
+		status: String,
+		university: String,
+		institute: String,
+		department: String,
+		department_id: String,
+		entering_year: Date,
+		graduation_year: Date,
+	}],
 	birthday: Date,
 	salt: String,
 	token: String

@@ -45,8 +45,8 @@ mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + 
 		var newSalt = saltGenerator(100);
 		var saltedPassword = request.body.password + newSalt;
 		var sha256 = crypto.createHash('sha256').update(saltedPassword).digest('hex');
-		var finalData = { 	login: userData.login,
-							password_hash: sha256,
+		var finalData = { 	login: userData.login, //d
+							password_hash: sha256, //d
 							registration_date: undefined,
 							name: userData.name,
 							surname: userData.surname,
@@ -58,8 +58,8 @@ mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + 
 							company: userData.company,
 							city: userData.city,
 							birthday: userData.birthday,
-							salt: newSalt,
-							token: undefined
+							salt: newSalt, //d
+							token: undefined //d
 						  }
 		var newUser = new User(finalData);
 		newUser.save(function (err) {
@@ -93,6 +93,9 @@ mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + 
 		  		return 0;
 		  	}
 
+		  	if(docs[0].token !== undefined) {
+		  		delete docs[0].token;
+		  	}
 		  	console.log('User data sent');
 			response.send(docs[0]);
 		});
@@ -155,3 +158,6 @@ mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + 
 			response.send(id);
 		});
 	});
+
+/** Post **/
+	

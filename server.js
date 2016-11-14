@@ -16,10 +16,19 @@ const server = app.listen(config.server.port, function() {
 });
 
 const mongoose = require('mongoose');
+
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + config.db.name, function() {
-	console.log('Connected to db at ' + 'mongodb://' + config.db.adress
-			  + ':' + config.db.port + '/' + config.db.name);
+// mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + config.db.name, function() {
+// 	console.log('Connected to db at ' + 'mongodb://' + config.db.adress
+// 			  + ':' + config.db.port + '/' + config.db.name);
+// });
+
+mongoose.connect('mongodb://' + config.db.adress + ':' + config.db.port + '/' + config.db.name);
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'db connection error:'));
+db.once('open', () => {
+	console.log("Successfully connected to MongoDB");
 });
 
 /** Models **/

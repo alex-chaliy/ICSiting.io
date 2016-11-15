@@ -13,6 +13,14 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/users/users.html',
 			controller: 'usersController'
 		})
+		.when('/login', {
+			templateUrl: 'components/pages/login/login.html',
+			controller: 'loginController'
+		})
+		.when('/register', {
+			templateUrl: 'components/pages/register/register.html',
+			controller: 'registerController'
+		})
 		.otherwise({
 			redirectTo: '/home'
 		});

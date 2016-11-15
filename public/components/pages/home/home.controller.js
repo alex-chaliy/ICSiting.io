@@ -5,7 +5,7 @@ let homeController = ($scope, $http, $location) => {
 homeController.$inject = [
 	'$scope',
 	'$http',
-	'$location',
+	'$location'
 ];
 
 angular.module('app').controller('homeController', homeController);

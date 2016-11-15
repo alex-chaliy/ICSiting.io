@@ -1,12 +1,10 @@
 # Entities
 
 * Entity Relationships *
-	
-	Page - Post --- many to many
-	Post - User --- one to many
+	User - Post --- one to many
 	User - Vacancy --- one to many
-	User - Cathedra --- many to one
-	Catedra - Subject --- one to many
+	User - Department --- many to one
+	Department - Subject --- one to many
 	User - Subject --- many to many
 ************************
 

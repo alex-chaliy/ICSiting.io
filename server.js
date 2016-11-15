@@ -143,3 +143,57 @@ db.once('open', () => {
 			}
 		});
 	});
+
+/** Post **/
+	app.post('/post', (request, response) => {
+		let data = request.body;
+		let post = new Post(data);
+		post.save((err, doc) => {
+			if(err) {
+		  		console.log('/post | POST | Error was occurred');
+				console.log(err.errmsg);
+				response.send(err.errmsg);
+			}
+			if(doc) {
+				response.send(doc._id);
+			}
+		});
+	});
+
+	app.get('/posts', (request, response) => {
+		Post.find((err, docs) => {
+			if (err) {
+		  		console.log('/posts | GET | Error was occurred');
+		  		response.send(err.errmsg);
+		  	}
+		  	if(docs) {
+	  			response.send(docs);
+		  	}
+		});
+	});
+
+	app.put('/post/:id', (request, response) => {
+		let id = request.params.id;
+		Post.update({ _id: id }, request.body, (err) => {
+			if(err) {
+		  		console.log('/post/:id | DELETE | Error was occurred');
+		  		console.log(err.errmsg);
+		  		response.send(err.errmsg);
+			} else {
+				response.send(id);
+			}
+		});
+	});
+
+	app.delete('/post/:id', (request, response) => {
+		let id = request.params.id;
+		Post.remove({ _id: id }, (err, doc) => {
+			if (err) {
+		  		console.log('/post/:id | DELETE | Error was occurred');
+		  		console.log(err.errmsg);
+		  		response.send(err.errmsg);
+		  	} else {
+				response.send(id);
+			}
+		});
+	});

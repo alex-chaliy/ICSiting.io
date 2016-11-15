@@ -4,15 +4,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+	verified: Boolean,
 	login: { type:String, unique: true, required: true, dropDups: true },
-	password_hash: String,
-	registration_date: { type: Date, default: Date.now },
+	passwordHash: String,
 	name: String,
+	secondName: String,
 	surname: String,
-	second_name: String,
-	groupe: String,
+	imgUrl: String,
 	city: String,
-	contacs: {
+	contacts: {
 		skype: String,
 		phone: String,
 		email: String
@@ -25,21 +25,28 @@ const UserSchema = new Schema({
 		company: String,
 		position: String
 	},
+
 	techerData: {
 		department_id: String,
 	},
-	education: [{
+
+	educations: [{
 		status: String,
 		university: String,
 		institute: String,
+
 		department: String,
 		department_id: String,
-		entering_year: Date,
-		graduation_year: Date,
+
+		entryYear: Number,
+		graduateYear: Number
 	}],
-	birthday: Date,
+
 	salt: String,
-	token: String
+	token: String,
+
+	registrationDate: { type: Date, default: Date.now },
+	birthday: Date
 });
 
 const User = mongoose.model('User', UserSchema);

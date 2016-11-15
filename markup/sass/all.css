@@ -6,7 +6,7 @@
   .reset-for-btn:focus, .main-btn:focus, .card-controls-btn:focus, .authorBlock-moreBtn:focus, .btnComments:focus {
     background: transparent; }
 
-._center, .homeSlider-itemContent .valign, .homeSlider-btn, .post .label, .page {
+._center, .homeSlider-itemContent .valign, .homeSlider-btn, .post .label, .page, .auth-btn {
   margin-left: auto;
   margin-right: auto; }
 
@@ -475,5 +475,40 @@ body, html {
       font-size: 1.2em; }
 
 /* end Page */
+/* authPage */
+.authPage {
+  background-image: url(/uploads/img/img-8.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1; }
+  .authPage-content {
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    padding-bottom: 1.5em; }
+  .authPage .main-title {
+    color: #00e5ff; }
+
+.auth-btn {
+  display: table;
+  background: #0091ea; }
+
+.auth-btn:focus {
+  background: #14a5fe !important; }
+
+/* end authPage */
+/* adds to MaterializeCSS */
+.card-secondTitle {
+  padding: .5em 0 0;
+  color: #333; }
+  .card-secondTitle span {
+    font-size: .9em; }
+
+/* end adds to MaterializeCSS */
 
 /*# sourceMappingURL=all.css.map */

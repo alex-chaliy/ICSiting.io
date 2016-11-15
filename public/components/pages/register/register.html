@@ -1,3 +1,53 @@
 <title>Регистрация на сайте</title>
 
-<h2>Регистрация на сайте</h2>
+<div class="authPage">
+	<div class="authPage-content">
+		<h2 class="main-title"> <span>Регистрация на сайте</span> </h2>
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col l12 m12 s12 _center card">
+					<div class="input-field col s12 m4 l4">
+						<input ng-model="userData.login" id="login" type="text" class="validate">
+						<label for="login">Логин*</label>
+				    </div>
+					<div class="input-field col s12 m4 l4">
+						<input ng-model="userData.password" id="password" type="text" class="validate">
+						<label for="password">Пароль*</label>
+				    </div>
+					<div class="input-field col s12 m4 l4">
+						<input ng-model="userData.contacts.email" id="email" type="text" class="validate">
+						<label for="email">Почта*</label>
+				    </div>
+				</div>
+
+				<div class="col l12 m12 s12 _center card">
+					<div class="input-field col s12 m4 l4">
+						<input ng-model="userData.name" id="_name" type="text" class="validate">
+						<label for="_name">Имя*</label>
+				    </div>
+					<div class="input-field col s12 m4 l4">
+						<input ng-model="userData.secondName" id="secondName" type="text" class="validate">
+						<label for="secondName">Отчество</label>
+				    </div>
+					<div class="input-field col s12 m4 l4">
+						<input ng-model="userData.surname" id="surname" type="text" class="validate">
+						<label for="surname">Фамилия*</label>
+				    </div>
+				</div>
+
+				<div class="col l6 m6 s12 _center card">
+					<div class="input-field col s12">
+						<input ng-model="userData.imgUrl" id="imgUrl" type="text" class="validate">
+						<label for="imgUrl">Ссылка на изображение профиля</label>
+				    </div>
+				</div>
+
+			</div>
+
+			<button  ng-click="register(userData)" class="auth-btn btn waves-effect waves-light"> <span>Зарегистрироваться</span> </button>
+
+		</div>
+	</div>
+</div>

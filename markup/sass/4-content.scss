@@ -484,3 +484,42 @@ body, html {height: 100%;}
 	}
 }
 /* end Page */
+
+
+
+/* authPage */
+.authPage{
+	background-image: url(/uploads/img/img-8.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+
+	&-content {
+		overflow: auto;
+		background-color: rgba(0,0,0, .5);
+		width: 100%;
+		height: 100%;
+		position: relative;
+		z-index: 0;
+		padding-bottom: 1.5em;
+	}
+
+	.main-title {color: $skyBlue-lighten;}
+}
+.auth-btn {
+	@extend ._center;
+	display: table;
+	background: $skyBlue;
+}
+.auth-btn:focus {background: $skyBlue + 20 !important;}
+/* end authPage */
+
+/* adds to MaterializeCSS */
+	.card-secondTitle {
+		padding: .5em 0 0;
+		color: #333;
+		span {font-size: .9em;}
+	}
+/* end adds to MaterializeCSS */

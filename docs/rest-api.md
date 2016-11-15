@@ -23,9 +23,13 @@
 ```json
 {
 	"_id": "9132137b539c5a1f022015ee",
+	"verified": "false",
+	"login": "user1",
+	"password": "pass1",
 	"name": "Борис",
 	"secondname": "Григорьевич",
 	"surname": "Довженко",
+	"imgUrl": "/uploads/img/user-1.png",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",
@@ -52,13 +56,18 @@
 		"status": "student",
 		"university": "Водный Университет",
 		"institute": "Институт Кибернетики и Автоматизации",
-		"department": "Название Кафедры"
+
+		"department": "Название Кафедры",
+		"department_id": "8c3a17db53cc5abb0220153a",
 
 		"entryYear": "2014",
-		"graduateYear": "2018",
+		"graduateYear": "2018"
+	}],
 
-		"department_id": "8c3a17db53cc5abb0220153a"
-	}]
+	"token": "5a3a1d7b534a3a1d7b53eae5bb20205d2a1235bb2075ad7b",
+
+	"registrationDate": "2016-11-01T22:13:36+02:00",
+	"birthday": "1996-21-09T22:13:36+02:00",
 }
 ```
 #### Операции чтения пользователей

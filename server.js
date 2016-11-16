@@ -264,25 +264,28 @@ db.once('open', () => {
 
 	app.put('/post/:id', (request, response) => {
 		let id = request.params.id;
-		let _token = request.body.token;
-		request.body.token = undefined;
-		let data = request.body;
+		let token = request.body.token;
+		let postData = request.body;
+		delete postData.token;
 
-		authCheck(_token, (accessType) => {
-
-			if((accessType == 'admin') || (accessType == 'moderator')){
-				Post.update({ _id: id }, data, (err) => {
+		let params = {
+			token: token,
+			UserEntity: User
+		}
+		defineUserRole(params, (role, user) => {
+			if(role === 'admin' || role === 'moderator') {
+				Post.update({ _id: id }, postData, (err) => {
 					if(err) {
 				  		console.log('/post/:id | PUT | Error was occurred');
 				  		console.log(err.errmsg);
 				  		response.send(err.errmsg);
 					} else {
-						response.send(id);
+						response.status(200).send(id);
 					}
 				});
 			} else {
-				response.send('Wrong access rights');
-			}	
+				response.status(403).send('Update access forbidden.');
+			}
 		});
 	});
 

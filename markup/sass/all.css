@@ -19,7 +19,7 @@
 .capitalize {
   text-transform: capitalize; }
 
-.txt-center, .main-title, .main-subtitle, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .homeSlider-event, .post-title {
+.txt-center, .main-title, .main-subtitle, .main-btn, .card-controls-btn, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .homeSlider-event, .post-title {
   text-align: center; }
 
 .txt-shadow, .main-title, .main-subtitle {
@@ -84,7 +84,9 @@
   line-height: 1.2em;
   display: table; }
   .main-btn span, .card-controls-btn span {
-    font-size: .9em; }
+    font-size: .9em;
+    display: inline-block;
+    width: 100%; }
   .main-btn:hover, .card-controls-btn:hover {
     background: #14aa9c; }
   .main-btn:focus, .card-controls-btn:focus {

@@ -72,7 +72,7 @@
 .main-input:focus {}
 
 .main-btn {
-	@extend .transition, .reset-for-btn, .txt-bold;
+	@extend .transition, .reset-for-btn, .txt-bold, .txt-center;
     background: #0091ea;
     border-radius: 30px;
     padding: .4em .5em;
@@ -80,7 +80,11 @@
     color: #fff;
     line-height: 1.2em;
     display: table;
-    span {font-size: .9em;}
+    span {
+    	font-size: .9em;
+    	display: inline-block;
+    	width: 100%;
+    }
 
     &:hover {background: (#009688) + 20;}
     &:focus {background: (#0091ea) + 20;}

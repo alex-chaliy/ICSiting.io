@@ -5,7 +5,11 @@ const app = angular.module('app', ['ngRoute']);
 // Routes
 let routesConfig = ($routeProvider) => {
 	$routeProvider.
-		when('/home', {
+		when('/admin', {
+			templateUrl: 'components/pages/admin/admin.html',
+			controller: 'adminController'
+		})
+		.when('/home', {
 			templateUrl: 'components/pages/home/home.html',
 			controller: 'homeController'
 		})
@@ -20,6 +24,10 @@ let routesConfig = ($routeProvider) => {
 		.when('/register', {
 			templateUrl: 'components/pages/register/register.html',
 			controller: 'registerController'
+		})
+		.when('/news', {
+			templateUrl: 'components/pages/news/news.html',
+			controller: 'newsController'
 		})
 		.otherwise({
 			redirectTo: '/home'

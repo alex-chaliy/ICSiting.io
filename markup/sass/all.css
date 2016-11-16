@@ -10,6 +10,11 @@
   margin-left: auto;
   margin-right: auto; }
 
+.center-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  display: table; }
+
 .upper {
   text-transform: uppercase; }
 
@@ -19,7 +24,7 @@
 .capitalize {
   text-transform: capitalize; }
 
-.txt-center, .main-title, .main-subtitle, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .homeSlider-event, .post-title {
+.txt-center, .main-title, .main-subtitle, .main-btn, .card-controls-btn, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .homeSlider-event, .post-title {
   text-align: center; }
 
 .txt-shadow, .main-title, .main-subtitle {
@@ -40,7 +45,7 @@
 .transition, .main-btn, .card-controls-btn {
   transition: .2s; }
 
-.clearfix:after, .authorBlock:after, .userPreview:after, .page.card:after {
+.clearfix:after, .authorBlock:after, .userPreview:after, .page.card:after, .card:after {
   content: '';
   display: block;
   clear: both; }
@@ -84,7 +89,9 @@
   line-height: 1.2em;
   display: table; }
   .main-btn span, .card-controls-btn span {
-    font-size: .9em; }
+    font-size: .9em;
+    display: inline-block;
+    width: 100%; }
   .main-btn:hover, .card-controls-btn:hover {
     background: #14aa9c; }
   .main-btn:focus, .card-controls-btn:focus {
@@ -508,6 +515,11 @@ body, html {
   color: #333; }
   .card-secondTitle span {
     font-size: .9em; }
+
+.skyBlue {
+  background-color: #0091ea; }
+  .skyBlue.btn:focus {
+    background: #14a5fe; }
 
 /* end adds to MaterializeCSS */
 

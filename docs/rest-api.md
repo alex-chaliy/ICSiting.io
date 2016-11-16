@@ -15,6 +15,14 @@
 	Department - Subject --- one to many
 	User - Subject --- many to many
 
+### Роли пользователей: 
+	- admin
+	- moderator
+	- user
+	- невошедший - в поле role будет пустая строка
+! Пользователь более низкокого ранга не может содавать пользователя более высокого ранга.
+	Исключением является регистрация.
+
 
 ## Как проводить операции над данными по разным сущностям
 
@@ -23,13 +31,15 @@
 ```json
 {
 	"_id": "9132137b539c5a1f022015ee",
+	"token": "37b539c5a1f9139132137b539c5a1022015ee1f022015ee2",
+	"role": "admin",
 	"verified": "false",
 	"login": "user1",
 	"password": "pass1",
 	"name": "Борис",
 	"secondname": "Григорьевич",
 	"surname": "Довженко",
-	"imgUrl": "/uploads/img/user-1.png",
+	"coverImg": "/uploads/img/user-1.png",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",
@@ -98,14 +108,13 @@
 #### Пример тела запроса со всеми возможными полями
 ```json
 {
-	"_id": "sfsd6f4s6d",
+	"_id": "8132122015ee37b539c5a1f0",
+	"token": "37b539c5a1f9139132137b539c5a1022015ee1f022015ee2",
+	"creator_id": "9132137b539c5a1f022015ee",
+	"creationDate": "2016-11-01T22:13:36+02:00",
 	"language_id": "4534chfg",
 	"title": "Відкриття 15-ї обласної науково-практичної конференції Одеського територіального відділення Малої академії наук",
 	"coverImg": "http://ics.opu.ua/uploads/img/cover_56hk5gj.jpg",
-
-	"author_id": "9132137b539c5a1f022015ee",
-
-	"date": "2016-11-01T22:13:36+02:00",
 	"tags": [
 		"event",
 		"ics"

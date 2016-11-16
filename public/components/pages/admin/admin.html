@@ -1,0 +1,37 @@
+<title>Панель администратора</title>
+
+<h3 class="main-title upper"> <span> Панель администратора </span> </h3>
+
+<div class="container">
+	<div class="row">
+		<div class="card">
+			<div class="card-content">
+				<h4 class="card-headerTitle">
+					<span> Создать Новость </span>
+				</h4>
+
+				<div class="col l12 m12 s12">
+					<div class="input-field col s12 m6 l6">
+						<input ng-model="postData.title" id="title" type="text" class="validate">
+						<label for="title">Заголовок Новости*</label>
+				    </div>
+					<div class="input-field col s12 m6 l6">
+						<input ng-model="postData.coverImg" id="coverImg" type="text" class="validate">
+						<label for="coverImg">Ссылка на изображение новости</label>
+				    </div>
+				</div>
+
+				<div class="col l12 m12 s12">
+					<div class="input-field col s12 m12 l12">
+						<span ng-init="postData.parts = []"></span>
+						<textarea ng-model="postData.parts[0]" id="part-0" type="text" class="validate materialize-textarea"></textarea>
+						<label for="part-0">Текст новости*</label>
+				    </div>
+				</div>
+
+				<button ng-click="createPost(postData)" class="btn skyBlue center-fluid waves-effect waves-light"> <span>Отправить</span> </button>
+			</div>
+		</div>
+	</div>	
+
+</div>

@@ -29,6 +29,11 @@ $btn-height: 37px;
 	margin-left: auto;
 	margin-right: auto;
 }
+.center-fluid {
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+}
 
 .upper {text-transform: uppercase;}
 .lower {text-transform: lowercase;}
@@ -91,7 +96,7 @@ $btn-height: 37px;
 .main-input:focus {}
 
 .main-btn {
-	@extend .transition, .reset-for-btn, .txt-bold;
+	@extend .transition, .reset-for-btn, .txt-bold, .txt-center;
     background: #0091ea;
     border-radius: 30px;
     padding: .4em .5em;
@@ -99,7 +104,11 @@ $btn-height: 37px;
     color: #fff;
     line-height: 1.2em;
     display: table;
-    span {font-size: .9em;}
+    span {
+    	font-size: .9em;
+    	display: inline-block;
+    	width: 100%;
+    }
 
     &:hover {background: (#009688) + 20;}
     &:focus {background: (#0091ea) + 20;}
@@ -627,5 +636,15 @@ body, html {height: 100%;}
 		padding: .5em 0 0;
 		color: #333;
 		span {font-size: .9em;}
+	}
+
+	.card {
+		@extend .clearfix;
+	}
+
+	// colors
+	.skyBlue {
+		background-color: $skyBlue;
+		&.btn:focus {background: $skyBlue + 20;}
 	}
 /* end adds to MaterializeCSS */

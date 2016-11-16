@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+	role: String,
 	verified: Boolean,
-	login: { type:String, unique: true, required: true, dropDups: true },
+	login: { type: String, unique: true, required: true, dropDups: true },
 	passwordHash: String,
 	name: String,
 	secondName: String,

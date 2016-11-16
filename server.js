@@ -61,6 +61,9 @@ db.once('open', () => {
 		userData.token = newSalt;
 		userData.password = "";
 
+		if(!userData.role)
+			userData.role = 'user';
+
 		let newUser = new User(userData);
 		newUser.save((err, doc) => {
 			if(err) {

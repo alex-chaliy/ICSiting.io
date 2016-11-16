@@ -1,4 +1,4 @@
-# REST API Документация (Devices Shop)
+# REST API Документация (ISC Social Network)
 
 
 ## Сущности, по котрым можно получить данные:

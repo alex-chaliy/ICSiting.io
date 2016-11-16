@@ -8,8 +8,10 @@ const _ = require('lodash');
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const config = require('./config.js');
-const saltGenerator = require('./saltGenerator.js');
+const config = require('./config');
+const saltGenerator = require('./saltGenerator');
+
+const defineUserRole = require('./defineUserRole');
 
 const app = express();
 const server = app.listen(config.server.port, () => {
@@ -221,14 +223,17 @@ db.once('open', () => {
 
 /** Post **/
 	app.post('/post', (request, response) => {
-		let _token = request.body.token;
-		request.body.token = undefined;
-		let data = request.body;
+		let token = request.body.token;
+		let postData = request.body;
+		delete postData.token;
 
-		authCheck(_token, (accessType) => {
-
-			if((accessType == 'admin') || (accessType == 'moderator')){
-				let post = new Post(data);
+		let params = {
+			token: token,
+			UserEntity: User
+		}
+		defineUserRole(params, (role, user) => {
+			if(role === 'admin' || role === 'moderator') {
+				let post = new Post(postData);
 				post.save((err, doc) => {
 					if(err) {
 				  		console.log('/post | POST | Error was occurred');
@@ -236,11 +241,11 @@ db.once('open', () => {
 						response.send(err.errmsg);
 					}
 					if(doc) {
-						response.send(doc._id);
+						response.status(200).send(doc._id);
 					}
 				});
 			} else {
-				response.send('Wrong access rights');
+				response.status(403).send('Write access forbidden.');
 			}
 		});
 	});
@@ -301,40 +306,3 @@ db.once('open', () => {
 			response.send('Wrong access rights');
 		}
 	});
-
-// Check authentication, return admin, moderator, currentUser, user, none
-let authCheck = (_token, callback, id) => {
-
-	let userData;
-	
-	let getUserData = () => {
-		return new Promise((resolve, reject) => {
-			User.find({ token: _token }, (err, docs) => {
-				if (err) {
-			  		console.log('Error was occurred while checking authentication');
-			  		response.send(err.errmsg);
-			  	} else {
-			  		userData = docs[0];
-			  		console.log('Promise resolved');
-			  		resolve();
-			  	}
-			});		
-		});
-	}
-
-	let check = () => {
-		if(userData !== undefined) {
-			
-			if(userData._id == id) {
-	  			callback('currentUser');
-	  		} else {
-	  			console.log(userData.role);
-	  			callback(userData.role);
-	  		}	
-		} else {
-			callback('none');
-		}
-	}
-
-	getUserData().then(check);
-}

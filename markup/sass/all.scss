@@ -29,6 +29,11 @@ $btn-height: 37px;
 	margin-left: auto;
 	margin-right: auto;
 }
+.center-fluid {
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+}
 
 .upper {text-transform: uppercase;}
 .lower {text-transform: lowercase;}
@@ -631,5 +636,15 @@ body, html {height: 100%;}
 		padding: .5em 0 0;
 		color: #333;
 		span {font-size: .9em;}
+	}
+
+	.card {
+		@extend .clearfix;
+	}
+
+	// colors
+	.skyBlue {
+		background-color: $skyBlue;
+		&.btn:focus {background: $skyBlue + 20;}
 	}
 /* end adds to MaterializeCSS */

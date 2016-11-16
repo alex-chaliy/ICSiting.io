@@ -31,6 +31,7 @@
 ```json
 {
 	"_id": "9132137b539c5a1f022015ee",
+	"token": "37b539c5a1f9139132137b539c5a1022015ee1f022015ee2",
 	"role": "admin",
 	"verified": "false",
 	"login": "user1",
@@ -38,7 +39,7 @@
 	"name": "Борис",
 	"secondname": "Григорьевич",
 	"surname": "Довженко",
-	"imgUrl": "/uploads/img/user-1.png",
+	"coverImg": "/uploads/img/user-1.png",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",
@@ -107,7 +108,8 @@
 #### Пример тела запроса со всеми возможными полями
 ```json
 {
-	"_id": "sfsd6f4s6d",
+	"_id": "8132122015ee37b539c5a1f0",
+	"token": "37b539c5a1f9139132137b539c5a1022015ee1f022015ee2",
 	"creator_id": "9132137b539c5a1f022015ee",
 	"creationDate": "2016-11-01T22:13:36+02:00",
 	"language_id": "4534chfg",

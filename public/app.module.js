@@ -5,7 +5,11 @@ const app = angular.module('app', ['ngRoute']);
 // Routes
 let routesConfig = ($routeProvider) => {
 	$routeProvider.
-		when('/home', {
+		when('/admin', {
+			templateUrl: 'components/pages/admin/admin.html',
+			controller: 'adminController'
+		})
+		.when('/home', {
 			templateUrl: 'components/pages/home/home.html',
 			controller: 'homeController'
 		})

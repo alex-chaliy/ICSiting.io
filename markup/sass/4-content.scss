@@ -522,4 +522,14 @@ body, html {height: 100%;}
 		color: #333;
 		span {font-size: .9em;}
 	}
+
+	.card {
+		@extend .clearfix;
+	}
+
+	// colors
+	.skyBlue {
+		background-color: $skyBlue;
+		&.btn:focus {background: $skyBlue + 20;}
+	}
 /* end adds to MaterializeCSS */

@@ -150,6 +150,9 @@ db.once('open', () => {
 /** Post **/
 	app.post('/post', (request, response) => {
 		let data = request.body;
+		if(!data.coverImg)
+			data.coverImg = '/uploads/img/default-cover.jpg';
+
 		let post = new Post(data);
 		post.save((err, doc) => {
 			if(err) {

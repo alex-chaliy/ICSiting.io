@@ -10,6 +10,11 @@
   margin-left: auto;
   margin-right: auto; }
 
+.center-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  display: table; }
+
 .upper {
   text-transform: uppercase; }
 
@@ -40,7 +45,7 @@
 .transition, .main-btn, .card-controls-btn {
   transition: .2s; }
 
-.clearfix:after, .authorBlock:after, .userPreview:after, .page.card:after {
+.clearfix:after, .authorBlock:after, .userPreview:after, .page.card:after, .card:after {
   content: '';
   display: block;
   clear: both; }
@@ -510,6 +515,11 @@ body, html {
   color: #333; }
   .card-secondTitle span {
     font-size: .9em; }
+
+.skyBlue {
+  background-color: #0091ea; }
+  .skyBlue.btn:focus {
+    background: #14a5fe; }
 
 /* end adds to MaterializeCSS */
 

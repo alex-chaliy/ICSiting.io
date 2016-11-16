@@ -58,8 +58,8 @@ db.once('open', () => {
 
 		userData.passwordHash = sha256;
 		userData.salt = newSalt;
-		userData.token = newSalt;
 		delete userData.password;
+		userData.token = undefined;
 
 		if(!userData.role)
 			userData.role = 'user';
@@ -89,10 +89,10 @@ db.once('open', () => {
 			if(docs) {
 				let doc = docs[0] || {};
 				// delete hidden properties
-				delete doc.login;
-				delete doc.passwordHash;
-				delete doc.salt;
-				delete doc.token;
+				doc.login = undefined;
+				doc.passwordHash = undefined;
+				doc.salt = undefined;
+				doc.token = undefined;
 				response.send(doc);
 			}
 		});
@@ -108,10 +108,10 @@ db.once('open', () => {
 		  		// delete hidden properties
 		  		let i = 0;
 		  		_.forEach(docs, (el) => {
-		  			delete el.login;
-		  			delete el.passwordHash;
-		  			delete el.salt;
-		  			delete el.token;
+		  			el.login = undefined;
+		  			el.passwordHash = undefined;
+		  			el.salt = undefined;
+		  			el.token = undefined;
 		  			i++;
 		  			if(i === docs.length)
 		  				response.send(docs);
@@ -126,7 +126,7 @@ db.once('open', () => {
 		let id = request.params.id;
 		User.update({ _id: id }, request.body, (err) => {
 			if(err) {
-		  		console.log('/user/:id | DELETE | Error was occurred');
+		  		console.log('/user/:id | PUT | Error was occurred');
 		  		console.log(err.errmsg);
 		  		response.send(err.errmsg);
 			} else {
@@ -146,6 +146,44 @@ db.once('open', () => {
 				response.send(id);
 			}
 		});
+	});
+
+	app.post('/login', (request, response) => {
+		let data = request.body;
+		User.find({ login: data.login }, (err, doc) => {
+			if (err) {
+		  		console.log('/login | GET | Error was occurred');
+		  		console.log(err.errmsg);
+		  		response.send(err.errmsg);
+		  	} else {
+
+				let saltedPassword = data.password + doc[0].salt;
+				let sha256 = crypto.createHash('sha256').update(saltedPassword).digest('hex');
+				if(sha256 == doc[0].passwordHash) {
+
+					// Create new token
+					let _token = saltGenerator(100);
+
+					// Put new token in current user
+					User.update({ _id: doc[0]._id }, { token: _token }, (err) => {
+						if(err) {
+					  		console.log('Error was occurred while creating new token');
+					  		console.log(err.errmsg);
+					  		response.send(err.errmsg);
+						} else {
+							response.send(_token);
+						}
+					});
+
+				} else {
+					response.send('Wrong password');
+				}
+			}
+		})
+	});
+
+	app.post('/logout', (request, response) => {
+
 	});
 
 /** Post **/
@@ -201,3 +239,4 @@ db.once('open', () => {
 			}
 		});
 	});
+

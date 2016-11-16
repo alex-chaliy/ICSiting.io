@@ -59,9 +59,10 @@ db.once('open', () => {
 		userData.passwordHash = sha256;
 		userData.salt = newSalt;
 		userData.token = newSalt;
-		userData.password = "";
+		delete userData.password;
 
 		let newUser = new User(userData);
+
 		newUser.save((err, doc) => {
 			if(err) {
 		  		console.log('/user | POST | Error was occurred');
@@ -85,10 +86,10 @@ db.once('open', () => {
 			if(docs) {
 				let doc = docs[0] || {};
 				// delete hidden properties
-				doc.login = "";
-				doc.passwordHash = "";
-				doc.salt = "";
-				doc.token = "";
+				delete doc.login;
+				delete doc.passwordHash;
+				delete doc.salt;
+				delete doc.token;
 				response.send(doc);
 			}
 		});
@@ -104,10 +105,10 @@ db.once('open', () => {
 		  		// delete hidden properties
 		  		let i = 0;
 		  		_.forEach(docs, (el) => {
-		  			el.login = "";
-		  			el.passwordHash = "";
-		  			el.salt = "";
-		  			el.token = "";
+		  			delete el.login;
+		  			delete el.passwordHash;
+		  			delete el.salt;
+		  			delete el.token;
 		  			i++;
 		  			if(i === docs.length)
 		  				response.send(docs);
@@ -143,3 +144,6 @@ db.once('open', () => {
 			}
 		});
 	});
+
+/** Posts **/
+	

@@ -124,48 +124,71 @@ db.once('open', () => {
 
 	app.put('/user/:id', (request, response) => {
 		let id = request.params.id;
-		User.update({ _id: id }, request.body, (err) => {
-			if(err) {
-		  		console.log('/user/:id | PUT | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
+		let _token = request.body.token;
+		request.body.token = undefined;
+		let updateData = request.body;
+
+		authCheck(_token, (accessType) => {
+
+			console.log(accessType);
+			if((accessType == 'admin') || (accessType == 'currentUser')){
+
+				User.update({ _id: id }, updateData, (err) => {
+					if(err) {
+				  		console.log('/user/:id | PUT | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+					} else {
+						response.send(id);
+					}
+				});
 			} else {
-				response.send(id);
+				response.send('Wrong access rights');
 			}
-		});
+		}, id);
 	});
 
 	app.delete('/user/:id', (request, response) => {
 		let id = request.params.id;
-		User.remove({ _id: id }, (err, doc) => {
-			if (err) {
-		  		console.log('/user/:id | DELETE | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
-		  	} else {
-				response.send(id);
+		let _token = request.body.token;
+		request.body.token = undefined;
+
+		authCheck(_token, (accessType) => {
+
+			if((accessType == 'admin') || (accessType == 'currentUser')){
+				User.remove({ _id: id }, (err, doc) => {
+					if (err) {
+				  		console.log('/user/:id | DELETE | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+				  	} else {
+						response.send(id);
+					}
+				});
+			} else {
+				response.send('Wrong access rights');
 			}
-		});
+		}, id);
 	});
 
 	app.post('/login', (request, response) => {
 		let data = request.body;
-		User.find({ login: data.login }, (err, doc) => {
+		User.find({ login: data.login }, (err, docs) => {
 			if (err) {
 		  		console.log('/login | GET | Error was occurred');
 		  		console.log(err.errmsg);
 		  		response.send(err.errmsg);
 		  	} else {
 
-				let saltedPassword = data.password + doc[0].salt;
+				let saltedPassword = data.password + docs[0].salt;
 				let sha256 = crypto.createHash('sha256').update(saltedPassword).digest('hex');
-				if(sha256 == doc[0].passwordHash) {
+				if(sha256 == docs[0].passwordHash) {
 
 					// Create new token
 					let _token = saltGenerator(100);
 
 					// Put new token in current user
-					User.update({ _id: doc[0]._id }, { token: _token }, (err) => {
+					User.update({ _id: docs[0]._id }, { token: _token }, (err) => {
 						if(err) {
 					  		console.log('Error was occurred while creating new token');
 					  		console.log(err.errmsg);
@@ -183,21 +206,41 @@ db.once('open', () => {
 	});
 
 	app.post('/logout', (request, response) => {
+		let token = request.body.token;
 
+		User.update({ token: token }, { token: undefined }, (err) => {
+			if(err) {
+		  		console.log('Error was occurred while logout');
+		  		console.log(err.errmsg);
+		  		response.send(err.errmsg);
+			} else {
+				response.send('User was logout');
+			}
+		});
 	});
 
 /** Post **/
 	app.post('/post', (request, response) => {
+		let _token = request.body.token;
+		request.body.token = undefined;
 		let data = request.body;
-		let post = new Post(data);
-		post.save((err, doc) => {
-			if(err) {
-		  		console.log('/post | POST | Error was occurred');
-				console.log(err.errmsg);
-				response.send(err.errmsg);
-			}
-			if(doc) {
-				response.send(doc._id);
+
+		authCheck(_token, (accessType) => {
+
+			if((accessType == 'admin') || (accessType == 'moderator')){
+				let post = new Post(data);
+				post.save((err, doc) => {
+					if(err) {
+				  		console.log('/post | POST | Error was occurred');
+						console.log(err.errmsg);
+						response.send(err.errmsg);
+					}
+					if(doc) {
+						response.send(doc._id);
+					}
+				});
+			} else {
+				response.send('Wrong access rights');
 			}
 		});
 	});
@@ -216,27 +259,82 @@ db.once('open', () => {
 
 	app.put('/post/:id', (request, response) => {
 		let id = request.params.id;
-		Post.update({ _id: id }, request.body, (err) => {
-			if(err) {
-		  		console.log('/post/:id | DELETE | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
+		let _token = request.body.token;
+		request.body.token = undefined;
+		let data = request.body;
+
+		authCheck(_token, (accessType) => {
+
+			if((accessType == 'admin') || (accessType == 'moderator')){
+				Post.update({ _id: id }, data, (err) => {
+					if(err) {
+				  		console.log('/post/:id | PUT | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+					} else {
+						response.send(id);
+					}
+				});
 			} else {
-				response.send(id);
-			}
+				response.send('Wrong access rights');
+			}	
 		});
 	});
 
 	app.delete('/post/:id', (request, response) => {
 		let id = request.params.id;
-		Post.remove({ _id: id }, (err, doc) => {
-			if (err) {
-		  		console.log('/post/:id | DELETE | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
-		  	} else {
-				response.send(id);
-			}
-		});
+		let _token = request.body.token;
+		request.body.token = undefined;
+
+		
+		if((accessType == 'admin') || (accessType == 'moderator')){
+			Post.remove({ _id: id }, (err, doc) => {
+				if (err) {
+			  		console.log('/post/:id | DELETE | Error was occurred');
+			  		console.log(err.errmsg);
+			  		response.send(err.errmsg);
+			  	} else {
+					response.send(id);
+				}
+			});
+		} else {
+			response.send('Wrong access rights');
+		}
 	});
 
+// Check authentication, return admin, moderator, currentUser, user, none
+let authCheck = (_token, callback, id) => {
+
+	let userData;
+	
+	let getUserData = () => {
+		return new Promise((resolve, reject) => {
+			User.find({ token: _token }, (err, docs) => {
+				if (err) {
+			  		console.log('Error was occurred while checking authentication');
+			  		response.send(err.errmsg);
+			  	} else {
+			  		userData = docs[0];
+			  		console.log('Promise resolved');
+			  		resolve();
+			  	}
+			});		
+		});
+	}
+
+	let check = () => {
+		if(userData !== undefined) {
+			
+			if(userData._id == id) {
+	  			callback('currentUser');
+	  		} else {
+	  			console.log(userData.role);
+	  			callback(userData.role);
+	  		}	
+		} else {
+			callback('none');
+		}
+	}
+
+	getUserData().then(check);
+}

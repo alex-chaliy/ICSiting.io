@@ -32,10 +32,12 @@ let registerController = ($scope, $http, $location) => {
 					console.log('Register status: Success.');
 					$scope.loginStatus = 'Успешная регистрация';
 				})
-				.error(() => {
+				.error((response) => {
 					console.log('Cannot register.');
-					$scope.loginStatus = 'Не могу провести регистрацию. ' + 
-						'Нет доступа к серверу.';
+					if(response.notUniqueLogin === true)
+						$scope.loginStatus = 'Пользователь с логином ' +  userData.login + ' уже существует, введите другой логин';
+					else
+						$scope.loginStatus = 'Не могу провести регистрацию. Нет доступа к серверу.';
 				});
 			}
 		}

@@ -108,18 +108,27 @@ db.once('open', () => {
 		if(!userData.role)
 			userData.role = 'user';
 
-		let newUser = new User(userData);
-
-		newUser.save((err, doc) => {
-			if(err) {
-		  		console.log('/user | POST | Error was occurred');
-				console.log(err.errmsg);
-				response.send(err.errmsg);
-			}
+		User.findOne({login: userData.login}, (err, doc) => {
 			if(doc) {
-				response.send(doc._id);
+				response.status(403).send({
+					msg: 'User with such login is existed',
+					notUniqueLogin: true
+				});
+			} else {
+				let newUser = new User(userData);
+				newUser.save((err, doc) => {
+					if(err) {
+				  		console.log('/user | POST | Error was occurred');
+						console.log(err.errmsg);
+						response.status(403).send(err.errmsg);
+					}
+					if(doc) {
+						response.send(doc._id);
+					}
+				});
 			}
 		});
+		
 	});
 
 	app.get('/user/:id', (request, response) => {

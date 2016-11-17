@@ -8,8 +8,10 @@ const _ = require('lodash');
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const config = require('./config.js');
-const saltGenerator = require('./saltGenerator.js');
+const config = require('./config');
+const saltGenerator = require('./saltGenerator');
+
+const defineUserRole = require('./defineUserRole');
 
 const app = express();
 const server = app.listen(config.server.port, () => {
@@ -58,8 +60,8 @@ db.once('open', () => {
 
 		userData.passwordHash = sha256;
 		userData.salt = newSalt;
-		userData.token = newSalt;
 		delete userData.password;
+		userData.token = undefined;
 
 		if(!userData.role)
 			userData.role = 'user';
@@ -89,10 +91,10 @@ db.once('open', () => {
 			if(docs) {
 				let doc = docs[0] || {};
 				// delete hidden properties
-				delete doc.login;
-				delete doc.passwordHash;
-				delete doc.salt;
-				delete doc.token;
+				doc.login = undefined;
+				doc.passwordHash = undefined;
+				doc.salt = undefined;
+				doc.token = undefined;
 				response.send(doc);
 			}
 		});
@@ -108,10 +110,10 @@ db.once('open', () => {
 		  		// delete hidden properties
 		  		let i = 0;
 		  		_.forEach(docs, (el) => {
-		  			delete el.login;
-		  			delete el.passwordHash;
-		  			delete el.salt;
-		  			delete el.token;
+		  			el.login = undefined;
+		  			el.passwordHash = undefined;
+		  			el.salt = undefined;
+		  			el.token = undefined;
 		  			i++;
 		  			if(i === docs.length)
 		  				response.send(docs);
@@ -124,45 +126,129 @@ db.once('open', () => {
 
 	app.put('/user/:id', (request, response) => {
 		let id = request.params.id;
-		User.update({ _id: id }, request.body, (err) => {
-			if(err) {
-		  		console.log('/user/:id | DELETE | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
+		let _token = request.body.token;
+		request.body.token = undefined;
+		let updateData = request.body;
+
+		authCheck(_token, (accessType) => {
+
+			console.log(accessType);
+			if((accessType == 'admin') || (accessType == 'currentUser')){
+
+				User.update({ _id: id }, updateData, (err) => {
+					if(err) {
+				  		console.log('/user/:id | PUT | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+					} else {
+						response.send(id);
+					}
+				});
 			} else {
-				response.send(id);
+				response.send('Wrong access rights');
 			}
-		});
+		}, id);
 	});
 
 	app.delete('/user/:id', (request, response) => {
 		let id = request.params.id;
-		User.remove({ _id: id }, (err, doc) => {
+		let _token = request.body.token;
+		request.body.token = undefined;
+
+		authCheck(_token, (accessType) => {
+
+			if((accessType == 'admin') || (accessType == 'currentUser')){
+				User.remove({ _id: id }, (err, doc) => {
+					if (err) {
+				  		console.log('/user/:id | DELETE | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+				  	} else {
+						response.send(id);
+					}
+				});
+			} else {
+				response.send('Wrong access rights');
+			}
+		}, id);
+	});
+
+	app.post('/login', (request, response) => {
+		let data = request.body;
+		User.find({ login: data.login }, (err, docs) => {
 			if (err) {
-		  		console.log('/user/:id | DELETE | Error was occurred');
+		  		console.log('/login | GET | Error was occurred');
 		  		console.log(err.errmsg);
 		  		response.send(err.errmsg);
 		  	} else {
-				response.send(id);
+
+				let saltedPassword = data.password + docs[0].salt;
+				let sha256 = crypto.createHash('sha256').update(saltedPassword).digest('hex');
+				if(sha256 == docs[0].passwordHash) {
+
+					// Create new token
+					let _token = saltGenerator(100);
+
+					// Put new token in current user
+					User.update({ _id: docs[0]._id }, { token: _token }, (err) => {
+						if(err) {
+					  		console.log('Error was occurred while creating new token');
+					  		console.log(err.errmsg);
+					  		response.send(err.errmsg);
+						} else {
+							response.send(_token);
+						}
+					});
+
+				} else {
+					response.send('Wrong password');
+				}
+			}
+		})
+	});
+
+	app.post('/logout', (request, response) => {
+		let token = request.body.token;
+
+		User.update({ token: token }, { token: undefined }, (err) => {
+			if(err) {
+		  		console.log('Error was occurred while logout');
+		  		console.log(err.errmsg);
+		  		response.send(err.errmsg);
+			} else {
+				response.send('User was logout');
 			}
 		});
 	});
 
 /** Post **/
 	app.post('/post', (request, response) => {
-		let data = request.body;
-		if(!data.coverImg)
-			data.coverImg = '/uploads/img/default-cover.jpg';
+		let token = request.body.token;
+		let postData = request.body;
+		delete postData.token;
 
-		let post = new Post(data);
-		post.save((err, doc) => {
-			if(err) {
-		  		console.log('/post | POST | Error was occurred');
-				console.log(err.errmsg);
-				response.send(err.errmsg);
-			}
-			if(doc) {
-				response.send(doc._id);
+		if(!postData.coverImg)
+			postData.coverImg = '/uploads/img/default-cover.jpg';
+
+		let params = {
+			token: token,
+			UserEntity: User
+		}
+		defineUserRole(params, (role, user) => {
+			if(role === 'admin' || role === 'moderator') {
+				let post = new Post(postData);
+				post.save((err, doc) => {
+					if(err) {
+				  		console.log('/post | POST | Error was occurred');
+						console.log(err.errmsg);
+						response.send(err.errmsg);
+					}
+					if(doc) {
+						response.status(200).send(doc._id);
+					}
+				});
+			} else {
+				response.status(403).send('Write access forbidden.');
 			}
 		});
 	});
@@ -181,26 +267,52 @@ db.once('open', () => {
 
 	app.put('/post/:id', (request, response) => {
 		let id = request.params.id;
-		Post.update({ _id: id }, request.body, (err) => {
-			if(err) {
-		  		console.log('/post/:id | DELETE | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
+		let token = request.body.token;
+		let postData = request.body;
+		delete postData.token;
+
+		let params = {
+			token: token,
+			UserEntity: User
+		}
+		defineUserRole(params, (role, user) => {
+			if(role === 'admin' || role === 'moderator') {
+				Post.update({ _id: id }, postData, (err) => {
+					if(err) {
+				  		console.log('/post/:id | PUT | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+					} else {
+						response.status(200).send(id);
+					}
+				});
 			} else {
-				response.send(id);
+				response.status(403).send('Update access forbidden.');
 			}
 		});
 	});
 
 	app.delete('/post/:id', (request, response) => {
 		let id = request.params.id;
-		Post.remove({ _id: id }, (err, doc) => {
-			if (err) {
-		  		console.log('/post/:id | DELETE | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
-		  	} else {
-				response.send(id);
+		let token = request.body.token;
+
+		let params = {
+			token: token,
+			UserEntity: User
+		}
+		defineUserRole(params, (role, user) => {
+			if(role === 'admin' || role === 'moderator') {
+				Post.remove({ _id: id }, (err) => {
+					if (err) {
+				  		console.log('/post/:id | DELETE | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+				  	} else {
+						response.send(id);
+					}
+				});
+			} else {
+				response.status(403).send('Delete access forbidden.');
 			}
 		});
 	});

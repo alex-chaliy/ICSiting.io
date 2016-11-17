@@ -291,21 +291,25 @@ db.once('open', () => {
 
 	app.delete('/post/:id', (request, response) => {
 		let id = request.params.id;
-		let _token = request.body.token;
-		request.body.token = undefined;
+		let token = request.body.token;
 
-		
-		if((accessType == 'admin') || (accessType == 'moderator')){
-			Post.remove({ _id: id }, (err, doc) => {
-				if (err) {
-			  		console.log('/post/:id | DELETE | Error was occurred');
-			  		console.log(err.errmsg);
-			  		response.send(err.errmsg);
-			  	} else {
-					response.send(id);
-				}
-			});
-		} else {
-			response.send('Wrong access rights');
+		let params = {
+			token: token,
+			UserEntity: User
 		}
+		defineUserRole(params, (role, user) => {
+			if(role === 'admin' || role === 'moderator') {
+				Post.remove({ _id: id }, (err) => {
+					if (err) {
+				  		console.log('/post/:id | DELETE | Error was occurred');
+				  		console.log(err.errmsg);
+				  		response.send(err.errmsg);
+				  	} else {
+						response.send(id);
+					}
+				});
+			} else {
+				response.status(403).send('Delete access forbidden.');
+			}
+		});
 	});

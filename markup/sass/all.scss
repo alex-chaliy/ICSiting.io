@@ -603,6 +603,9 @@ body, html {height: 100%;}
 
 
 /* authPage */
+.auth-hint {
+
+}
 .authPage{
 	background-image: url(/uploads/img/img-8.jpg);
 	background-size: cover;
@@ -623,12 +626,6 @@ body, html {height: 100%;}
 
 	.main-title {color: $skyBlue-lighten;}
 }
-.auth-btn {
-	@extend ._center;
-	display: table;
-	background: $skyBlue;
-}
-.auth-btn:focus {background: $skyBlue + 20 !important;}
 /* end authPage */
 
 /* adds to MaterializeCSS */

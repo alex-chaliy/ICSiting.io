@@ -6,7 +6,7 @@
   .reset-for-btn:focus, .main-btn:focus, .card-controls-btn:focus, .authorBlock-moreBtn:focus, .btnComments:focus {
     background: transparent; }
 
-._center, .homeSlider-itemContent .valign, .homeSlider-btn, .post .label, .page, .auth-btn {
+._center, .homeSlider-itemContent .valign, .homeSlider-btn, .post .label, .page {
   margin-left: auto;
   margin-right: auto; }
 
@@ -500,13 +500,6 @@ body, html {
     padding-bottom: 1.5em; }
   .authPage .main-title {
     color: #00e5ff; }
-
-.auth-btn {
-  display: table;
-  background: #0091ea; }
-
-.auth-btn:focus {
-  background: #14a5fe !important; }
 
 /* end authPage */
 /* adds to MaterializeCSS */

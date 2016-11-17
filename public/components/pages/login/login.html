@@ -5,8 +5,9 @@
 		<h2 class="main-title"> <span>Вход на сайт</span> </h2>
 
 		<div class="container">
-			<div class="row">
+			<div class="auth-hint white-text">{{loginStatus}}</div>
 
+			<div class="row">
 				<div class="col l12 m12 s12 card">
 					<div class="input-field col s12 m6 l6">
 						<input ng-model="userData.login" id="login" type="text" class="validate">
@@ -19,7 +20,7 @@
 				</div>
 			</div>
 
-			<button ng-click="login(userData)" class="auth-btn btn waves-effect waves-light"> <span>Войти</span> </button>
+			<button ng-click="login(userData)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Войти</span> </button>
 
 		</div>
 	</div>

@@ -9,9 +9,11 @@ let loginController = ($scope, $http, $location) => {
 		})
 		.success((response) => {
 			console.log('Login status: Success.');
+			console.log(response);
 		})
-		.error(() => {
+		.error((response) => {
 			console.log('Cannot login.');
+			console.log(response);
 		});
 	}
 }

@@ -51,17 +51,59 @@ db.once('open', () => {
 	app.use(bodyParser.json());
 
 /** Users **/
+	app.post('/login', (request, response) => {
+		let userData = request.body;
+		User.findOne({ login: userData.login }, (err, user) => {
+			if (err) response.send(err.errmsg);
+		  	else {
+				if(user) {
+					let saltedPassword = userData.password + user.salt;
+					let hashedPassword = crypto.createHash('sha256').update(saltedPassword).digest('hex');
+
+					if(hashedPassword === user.passwordHash) {
+						let newToken = saltGenerator(100);
+						user.token = newToken;
+						user.passwordHash = undefined;
+						user.salt = undefined;
+
+						User.update({ _id: user._id }, { token: newToken }, (err) => {
+							if(err) response.send(err.errmsg);
+							else response.status(200).send(user);
+						});
+					} else response.status(403).send('Wrong password.');
+					
+				} else response.status(403).send('Wrong login.');
+			}
+		});
+	});
+
+	app.post('/logout', (request, response) => {
+		let token = request.body.token;
+
+		User.findOne({ token: token }, (err, user) => {
+			if (err) response.send(err.errmsg);
+		  	else {
+				if(user) {
+					User.update({ token: token }, { token: null }, (err) => {
+						if(err) response.send(err.errmsg);
+						else response.status(200).send('User was logout.');
+					});
+				} else {response.status(403).send('Wrong token.');}
+			}
+		});
+	});
+
 	app.post('/user', (request, response) => {
 		let userData = request.body;
 
 		let newSalt = saltGenerator(100);
 		let saltedPassword = userData.password + newSalt;
-		let sha256 = crypto.createHash('sha256').update(saltedPassword).digest('hex');
+		let hashedPassword = crypto.createHash('sha256').update(saltedPassword).digest('hex');
 
-		userData.passwordHash = sha256;
+		userData.passwordHash = hashedPassword;
 		userData.salt = newSalt;
 		delete userData.password;
-		userData.token = undefined;
+		userData.token = saltGenerator(100);
 
 		if(!userData.role)
 			userData.role = 'user';
@@ -171,54 +213,6 @@ db.once('open', () => {
 				response.send('Wrong access rights');
 			}
 		}, id);
-	});
-
-	app.post('/login', (request, response) => {
-		let data = request.body;
-		User.find({ login: data.login }, (err, docs) => {
-			if (err) {
-		  		console.log('/login | GET | Error was occurred');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
-		  	} else {
-
-				let saltedPassword = data.password + docs[0].salt;
-				let sha256 = crypto.createHash('sha256').update(saltedPassword).digest('hex');
-				if(sha256 == docs[0].passwordHash) {
-
-					// Create new token
-					let _token = saltGenerator(100);
-
-					// Put new token in current user
-					User.update({ _id: docs[0]._id }, { token: _token }, (err) => {
-						if(err) {
-					  		console.log('Error was occurred while creating new token');
-					  		console.log(err.errmsg);
-					  		response.send(err.errmsg);
-						} else {
-							response.send(_token);
-						}
-					});
-
-				} else {
-					response.send('Wrong password');
-				}
-			}
-		})
-	});
-
-	app.post('/logout', (request, response) => {
-		let token = request.body.token;
-
-		User.update({ token: token }, { token: undefined }, (err) => {
-			if(err) {
-		  		console.log('Error was occurred while logout');
-		  		console.log(err.errmsg);
-		  		response.send(err.errmsg);
-			} else {
-				response.send('User was logout');
-			}
-		});
 	});
 
 /** Post **/

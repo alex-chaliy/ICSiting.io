@@ -37,11 +37,12 @@
 						</span>
 					</div>
 
-					<button ng-click="ui.toggleClass('dropdown-' + new._id, 'active')" class="authorBlock-moreBtn waves-effect waves-light">
+					<button ng-focus="ui.toggleClass('dropdown-' + new._id, 'active')" ng-blur="ui.toggleClass('dropdown-' + new._id, 'active')" class="authorBlock-moreBtn waves-effect waves-light">
 						<i class="material-icons"> more_vert </i>
 
 						<ul id="dropdown-{{new._id}}" class="dropdownContent">
-							<li ng-click="deletePost(new._id, loggedUser.token)"> <span> Удалить новость </span> </li>
+							<li> <a href=""> <span> Читать далее </span> </a> </li>
+							<li ng-click="deletePost(new._id, loggedUser.token)" ng-if="loggedUser.role==='admin' || loggedUser.role==='moderator'"> <span> Удалить новость </span> </li>
 						</ul>
 					</button>
 				</div>

@@ -2,9 +2,10 @@
 
 <h3 class="main-title upper"> <span>Новости</span> </h3>
 
-<div class="container">
+<div class="container l-950 m-full">
 	<div class="newsBlock row">
-		<div ng-repeat="new in news" class="col l6 m6 s12 post-wrapper">
+		<div class="actionStatus black-text center-align">{{actionStatus}}</div>
+		<div ng-repeat="new in news" class="col l6 m6 s12 post-wrapper" id="post-{{new._id}}">
 			<div class="card post">
 				<div class="post-image">
 					<img src="{{new.coverImg}}" alt="">
@@ -28,7 +29,7 @@
 						<img src="/uploads/img/user-logo-small.jpg" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
-						<a class="authorBlock-name" href="">
+						<a class="authorBlock-name" href="https://vk.com/producedbysoul">
 							<span> Алексей Чалый </span>
 						</a>
 						<span class="authorBlock-date" href="">
@@ -36,8 +37,12 @@
 						</span>
 					</div>
 
-					<button class="authorBlock-moreBtn waves-effect waves-light">
+					<button ng-click="ui.toggleClass('dropdown-' + new._id, 'active')" class="authorBlock-moreBtn waves-effect waves-light">
 						<i class="material-icons"> more_vert </i>
+
+						<ul id="dropdown-{{new._id}}" class="dropdownContent">
+							<li ng-click="deletePost(new._id, loggedUser.token)"> <span> Удалить новость </span> </li>
+						</ul>
 					</button>
 				</div>
 

@@ -257,7 +257,8 @@ db.once('open', () => {
 	});
 
 	app.get('/posts', (request, response) => {
-		Post.find((err, docs) => {
+		Post.find()
+		.sort([['creationDate', -1]]).exec((err, docs) => {
 			if (err) {
 		  		console.log('/posts | GET | Error was occurred');
 		  		response.send(err.errmsg);
@@ -299,6 +300,9 @@ db.once('open', () => {
 		let id = request.params.id;
 		let token = request.body.token;
 
+		console.log(request.body);
+		console.log(id);
+
 		let params = {
 			token: token,
 			UserEntity: User
@@ -309,9 +313,9 @@ db.once('open', () => {
 					if (err) {
 				  		console.log('/post/:id | DELETE | Error was occurred');
 				  		console.log(err.errmsg);
-				  		response.send(err.errmsg);
+				  		response.status(403).send(err.errmsg);
 				  	} else {
-						response.send(id);
+						response.status(200).send(id);
 					}
 				});
 			} else {

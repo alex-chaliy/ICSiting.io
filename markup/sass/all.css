@@ -42,7 +42,7 @@
 .txt-bold, .main-btn, .card-controls-btn, .homeSlider-btn, .homeSlider-eventLink {
   font-weight: 600; }
 
-.transition, .main-btn, .card-controls-btn {
+.transition, .main-btn, .card-controls-btn, .dropdownContent {
   transition: .2s; }
 
 .clearfix:after, .authorBlock:after, .userPreview:after, .page.card:after, .card:after {
@@ -206,6 +206,7 @@ body, html {
   .post-imageContent a {
     color: #fff; }
 .post-title {
+  width: 100%;
   padding: 0 .3em;
   line-height: 1.3em; }
   .post-title span {
@@ -251,7 +252,8 @@ body, html {
     width: 2em;
     height: 2em;
     border-radius: 2em;
-    padding: 0; }
+    padding: 0;
+    overflow: visible !important; }
     .authorBlock-moreBtn:hover {
       background: rgba(0, 0, 0, 0.2); }
     .authorBlock-moreBtn .material-icons {
@@ -514,6 +516,46 @@ body, html {
   .skyBlue.btn:focus {
     background: #14a5fe; }
 
+.container {
+  transition: .5s; }
+
+@media (min-width: 1100px) {
+  .container.l-950 {
+    width: 950px; } }
+@media (max-width: 1099px) {
+  .container.m-full {
+    width: 95%; } }
+@media (max-width: 750px) {
+  .container.m-full .col.s12 {
+    width: 100%; } }
 /* end adds to MaterializeCSS */
+.validationStatus {
+  padding-top: 1em; }
+
+.dropdownContent {
+  opacity: 0;
+  top: -60px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  padding: .5em;
+  display: table;
+  position: absolute;
+  right: 0;
+  background: #fff; }
+
+.dropdownContent.active {
+  opacity: 1;
+  top: -30px;
+  height: auto;
+  width: auto; }
+
+.dropdownContent li {
+  padding: 0 .5em;
+  display: table;
+  line-height: 1em;
+  font-size: 1em; }
+  .dropdownContent li span {
+    font-size: 1em; }
 
 /*# sourceMappingURL=all.css.map */

@@ -13,7 +13,7 @@ let loginController = ($scope, $http, $location) => {
 			$scope.loginStatus = 'Вы успешно авторизовались.';
 
 			response = JSON.stringify(response);
-			Cookie.set('loggedUser', response);
+			Cookies.set('loggedUser', response);
 		})
 		.error((response) => {
 			console.log('Cannot login.');

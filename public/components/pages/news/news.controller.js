@@ -4,7 +4,7 @@ let newsController = ($scope, $http, $location, ui) => {
 	let loggedUser = Cookies.get('loggedUser') || '{}';
 	$scope.loggedUser = JSON.parse(loggedUser);
 
-	console.log('logged user: ' + $scope.loggedUser.name + ', role: ' + $scope.loggedUser.token);
+	console.log('logged user: ' + $scope.loggedUser.name + ', role: ' + $scope.loggedUser.role);
 
 	$scope.ui = ui;
 

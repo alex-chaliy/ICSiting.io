@@ -268,6 +268,18 @@ db.once('open', () => {
 		  	}
 		});
 	});
+	app.get('/post/:id', (request, response) => {
+		let id = request.params.id;
+		Post.findOne({_id: id}, (err, doc) => {
+			if (err) {
+		  		console.log('/post/:id | GET | Error was occurred');
+		  		response.send(err.errmsg);
+		  	}
+		  	if(doc) {
+	  			response.send(doc);
+		  	}
+		});
+	});
 
 	app.put('/post/:id', (request, response) => {
 		let id = request.params.id;

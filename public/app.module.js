@@ -29,6 +29,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/news/news.html',
 			controller: 'newsController'
 		})
+		.when('/post', {
+			templateUrl: 'components/pages/post/post.html',
+			controller: 'postController'
+		})
 		.otherwise({
 			redirectTo: '/home'
 		});

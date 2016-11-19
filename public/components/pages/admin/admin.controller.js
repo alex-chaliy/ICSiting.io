@@ -1,6 +1,8 @@
 'use strict';
 
-let adminController = ($scope, $http, $location) => {
+let adminController = ($scope, $http, $location, ui) => {
+	$scope.ui = ui;
+
 	let loggedUser = Cookies.get('loggedUser') || '{}';
 	$scope.loggedUser = JSON.parse(loggedUser);
 
@@ -34,7 +36,8 @@ let adminController = ($scope, $http, $location) => {
 adminController.$inject = [
 	'$scope',
 	'$http',
-	'$location'
+	'$location',
+	'ui'
 ];
 
 angular.module('app').controller('adminController', adminController);

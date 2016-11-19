@@ -124,6 +124,7 @@ body {
 	font-size: $base-font-size;
 	background-color: #eee;
 	background: url(/uploads/img/circuit-50.png);
+	background-attachment: fixed;
 }
 @media (max-width: 320px) {body {font-size: 7px} }
 @media (max-width: 568px) {body {font-size: 12px} }

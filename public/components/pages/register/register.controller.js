@@ -31,6 +31,9 @@ let registerController = ($scope, $http, $location) => {
 				.success((response) => {
 					console.log('Register status: Success.');
 					$scope.loginStatus = 'Успешная регистрация';
+					setTimeout(() => {
+						location.replace('/#/news');
+					}, 1000);
 				})
 				.error((response) => {
 					console.log('Cannot register.');

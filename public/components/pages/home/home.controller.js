@@ -59,6 +59,20 @@ let homeController = ($scope, $http, $location, ui) => {
 	let Slider = ui.Slider;
 	let slider = Object.create(Slider).constructor(slides);
 	slider.run($scope.slides);
+
+	$scope.getNews = (userData) => {
+		$http({
+			method: 'GET',
+			url: '/posts'
+		})
+		.success((response) => {
+			$scope.news = response;
+		})
+		.error(() => {
+			console.log('Cannot get news.');
+		});
+	}
+	$scope.getNews();
 }
 homeController.$inject = [
 	'$scope',

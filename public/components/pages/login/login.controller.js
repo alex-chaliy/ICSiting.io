@@ -14,6 +14,10 @@ let loginController = ($scope, $http, $location) => {
 
 			response = JSON.stringify(response);
 			Cookies.set('loggedUser', response);
+
+			setTimeout(() => {
+				location.replace('/#/news');
+			}, 1000);
 		})
 		.error((response) => {
 			console.log('Cannot login.');

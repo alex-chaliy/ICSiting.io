@@ -1,8 +1,10 @@
 <title>Новости</title>
 
-<h3 class="main-title upper"> <span>Новости</span> </h3>
+<ng-include class="skyBlue" src="'components/partials/header.html'"></ng-include>
 
-<div class="container l-950 m-full">
+<div class="container l-950 m-full changeable-onMenuOpen">
+	<h3 class="main-title upper"> <span>Новости</span> </h3>
+
 	<div class="newsBlock row">
 		<div class="actionStatus black-text center-align">{{actionStatus}}</div>
 		<div ng-repeat="new in news" class="col l6 m6 s12 post-wrapper" id="post-{{new._id}}">

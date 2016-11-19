@@ -1,6 +1,8 @@
 <title>ИКС ОНПУ</title>
 
-<div class="homeSliderWrapper">
+<ng-include class="header--fixed" src="'components/partials/header.html'"></ng-include>
+
+<div class="homeSliderWrapper changeable-onMenuOpen">
 	<div class="homeSlider">
 		<div id="{{slide._id}}" style="background-image: url( {{slide.bgImg.url}} )" class="homeSlider-item" ng-repeat="slide in slides">
 			<div class="homeSlider-itemContent valign-wrapper">
@@ -27,9 +29,8 @@
 	</div>
 </div>
 
-<h3 class="main-title upper"> <span> Последние Новости</span> </h3>
-
-<div class="container">
+<div class="container l-950 m-full changeable-onMenuOpen">
+	<h3 class="main-title upper"> <span> Последние Новости</span> </h3>
 	
 	<div class="newsBlock homeNews row">
 		<div class="col l6 m6 s12 posts-wrapper">

@@ -10,7 +10,7 @@ angular.module('app').factory('ui', () => {
 
 	let toggleMenu = () => {
 		toggleClass('nav-menu', 'nav-menu_active');
-		toggleClass('change-on-menu-open', 'move-left-on-menu-open');
+		$('.changeable-onMenuOpen').toggleClass('moveLeft-onMenuOpen');
 	}
 
 	let scrollTo = (target, time) => {
@@ -49,7 +49,7 @@ angular.module('app').factory('ui', () => {
 				}
 				homeSlider.animate({
 					'left': left
-				}, this.config.duration);
+				}, this.config.duration, 'easeOutCubic');
 			};
 			this.run = () => {
 				this.render();

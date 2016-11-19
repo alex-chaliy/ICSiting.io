@@ -104,4 +104,4 @@ let slider = {
 	}
 };
 
-//slider.run();
+slider.run();

@@ -2,62 +2,24 @@
 
 <div class="homeSliderWrapper">
 	<div class="homeSlider">
-		<div id="s1" class="homeSlider-item">
+		<div id="{{slide._id}}" style="background-image: url( {{slide.bgImg.url}} )" class="homeSlider-item" ng-repeat="slide in slides">
 			<div class="homeSlider-itemContent valign-wrapper">
 				<div class="valign">
-					<h1 class="homeSlider-title"> <span>ИКС</span> </h1>
-					<h2 class="homeSlider-subTitle"> <span>Институт Компьютерных Систем</span> </h2>
-					<h3 class="homeSlider-keyWordTitle"> <span>Интеллект</span> </h3>
+					<h1 class="homeSlider-title"> <span>{{slide.title}}</span> </h1>
+					<h2 class="homeSlider-subTitle"> <span>{{slide.subtitle}}</span> </h2>
+					<h3 class="homeSlider-keyWordTitle" style="color: {{slide.keyWordTitle.color}}"> <span>{{slide.keyWordTitle.text}}</span> </h3>
 
-					<a class="homeSlider-btn btn waves-effect waves-light"> <span>Новости ИКСа</span> </a>
+					<a href="{{slide.btn.href}}" style="background: {{slide.btn.bgColor}}" class="homeSlider-btn btn waves-effect waves-light"> <span>{{slide.btn.text}}</span> </a>
 
-					<div class="homeSlider-event">
-						<span class="homeSlider-eventStatus">Скоро: </span>
-						<a href="" class="homeSlider-eventLink"> <span> Відкриття 15-ї обласної науково-практичної конференції Одеського територіального відділення Малої академії наук </span> </a>
-					</div>
-					<div class="homeSlider-event">
-						<span class="homeSlider-eventStatus">Недавнее событие: </span>
-						<a href="" class="homeSlider-eventLink"> <span> Отчёт об конференции по Python в рамках ICS IT-School ( + фото) </span> </a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="s2" class="homeSlider-item">
-			<div class="homeSlider-itemContent valign-wrapper">
-				<div class="valign">
-					<h1 class="homeSlider-title"> <span>ИКС</span> </h1>
-					<h2 class="homeSlider-subTitle"> <span>Институт Компьютерных Систем</span> </h2>
-					<h3 class="homeSlider-keyWordTitle"> <span>Интеллект</span> </h3>
-
-					<a class="homeSlider-btn btn waves-effect waves-light"> <span>Новости ИКСа</span> </a>
-
-					<div class="homeSlider-event">
-						<span class="homeSlider-eventStatus">Скоро: </span>
-						<a href="" class="homeSlider-eventLink"> <span> Відкриття 15-ї обласної науково-практичної конференції Одеського територіального відділення Малої академії наук </span> </a>
-					</div>
-					<div class="homeSlider-event">
-						<span class="homeSlider-eventStatus">Недавнее событие: </span>
-						<a href="" class="homeSlider-eventLink"> <span> Отчёт об конференции по Python в рамках ICS IT-School ( + фото) </span> </a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="s3" class="homeSlider-item">
-			<div class="homeSlider-itemContent valign-wrapper">
-				<div class="valign">
-					<h1 class="homeSlider-title"> <span>ИКС</span> </h1>
-					<h2 class="homeSlider-subTitle"> <span>Институт Компьютерных Систем</span> </h2>
-					<h3 class="homeSlider-keyWordTitle"> <span>Интеллект</span> </h3>
-
-					<a class="homeSlider-btn btn waves-effect waves-light"> <span>Новости ИКСа</span> </a>
-
-					<div class="homeSlider-event">
-						<span class="homeSlider-eventStatus">Скоро: </span>
-						<a href="" class="homeSlider-eventLink"> <span> Відкриття 15-ї обласної науково-практичної конференції Одеського територіального відділення Малої академії наук </span> </a>
-					</div>
-					<div class="homeSlider-event">
-						<span class="homeSlider-eventStatus">Недавнее событие: </span>
-						<a href="" class="homeSlider-eventLink"> <span> Отчёт об конференции по Python в рамках ICS IT-School ( + фото) </span> </a>
+					<div ng-if="">
+						<div class="homeSlider-event">
+							<span class="homeSlider-eventStatus">Скоро: </span>
+							<a href="" class="homeSlider-eventLink"> <span> Відкриття 15-ї обласної науково-практичної конференції Одеського територіального відділення Малої академії наук </span> </a>
+						</div>
+						<div class="homeSlider-event">
+							<span class="homeSlider-eventStatus">Недавнее событие: </span>
+							<a href="" class="homeSlider-eventLink"> <span> Отчёт об конференции по Python в рамках ICS IT-School ( + фото) </span> </a>
+						</div>
 					</div>
 				</div>
 			</div>

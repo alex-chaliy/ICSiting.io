@@ -273,10 +273,10 @@ db.once('open', () => {
 		Post.findOne({_id: id}, (err, doc) => {
 			if (err) {
 		  		console.log('/post/:id | GET | Error was occurred');
-		  		response.send(err.errmsg);
+		  		response.status(403).send(err.errmsg);
 		  	}
 		  	if(doc) {
-	  			response.send(doc);
+	  			response.status(200).send(doc);
 		  	}
 		});
 	});

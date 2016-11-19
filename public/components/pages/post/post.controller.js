@@ -16,8 +16,9 @@ let postController = ($scope, $http, $location, $routeParams, ui) => {
 		.success((response) => {
 			$scope.post = response;
 		})
-		.error(() => {
+		.error((response) => {
 			console.log('Cannot get post.');
+			location.replace('/#/news');
 		});
 	}
 	$scope.getPost();

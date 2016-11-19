@@ -107,7 +107,8 @@
 body {
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  background-color: #eee; }
+  background-color: #eee;
+  background: url(/uploads/img/circuit-50.png); }
 
 @media (max-width: 320px) {
   body {

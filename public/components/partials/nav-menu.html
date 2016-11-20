@@ -25,7 +25,19 @@
 		<a href="/#/news"> <span>Новости</span> </a>
 	</div>
 
-	<!-- <div if="!loggedUser.role" class="nav-menu__item">
+	<div ng-if="!loggedUser.role" class="nav-menu__item">
 		<a href="/#/login"> <span>Войти</span> </a>
-	</div> -->
+	</div>
+
+	<div ng-click="logout(loggedUser.token)" ng-if="loggedUser.role" class="nav-menu__item">
+		<span>Выйти</span>
+	</div>
+
+	<div ng-if="loggedUser.role" class="nav-menu__item">
+		<div class="loggedUser">
+			<a class="loggedUser-img" href="/#/admin">
+				<img ng-if="loggedUser.imgUrl" src="{{loggedUser.imgUrl}}" alt="">
+			</a>
+		</div>
+	</div>
 </div>

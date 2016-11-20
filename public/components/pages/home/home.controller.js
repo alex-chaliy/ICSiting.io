@@ -1,6 +1,12 @@
 'use strict';
 
 let homeController = ($scope, $http, $location, ui) => {
+	let loggedUser = Cookies.get('loggedUser') || '{}';
+	$scope.loggedUser = JSON.parse(loggedUser);
+	console.log('logged user: ' + $scope.loggedUser.name + ', role: ' + $scope.loggedUser.role);
+
+	$scope.ui = ui;
+
 	let slides = [
 		{
 			_id: 's1',
@@ -28,7 +34,7 @@ let homeController = ($scope, $http, $location, ui) => {
 				color: '#f4ff81'
 			},
 			btn: {
-				text: 'Найти одногрупника',
+				text: 'Найти одногруппника',
 				href: '/#/users',
 				bgColor: '#ffab00'
 			},
@@ -55,7 +61,6 @@ let homeController = ($scope, $http, $location, ui) => {
 		},
 	];
 	$scope.slides = slides;
-	$scope.ui = ui;
 	let Slider = ui.Slider;
 	let slider = Object.create(Slider).constructor(slides);
 	slider.run($scope.slides);

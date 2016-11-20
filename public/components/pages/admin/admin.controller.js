@@ -1,10 +1,11 @@
 'use strict';
 
 let adminController = ($scope, $http, $location, ui) => {
-	$scope.ui = ui;
-
 	let loggedUser = Cookies.get('loggedUser') || '{}';
 	$scope.loggedUser = JSON.parse(loggedUser);
+	console.log('logged user: ' + $scope.loggedUser.name + ', role: ' + $scope.loggedUser.role);
+
+	$scope.ui = ui;
 
 	console.log('logged user: ' + $scope.loggedUser.name + ', role: ' + $scope.loggedUser.role);
 	if($scope.loggedUser.role !== 'admin' && $scope.loggedUser.role !== 'moderator') {

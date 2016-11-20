@@ -14,13 +14,17 @@
 						<label for="login">Логин*</label>
 				    </div>
 					<div class="input-field col s12 m6 l6">
-						<input ng-model="userData.password" id="password" type="text" class="validate">
+						<input ng-model="userData.password" id="password" type="password" class="validate">
 						<label for="password">Пароль*</label>
 				    </div>
 				</div>
 			</div>
 
 			<button ng-click="login(userData)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Войти</span> </button>
+
+			<a class="center-fluid authPage-outerLink"  href="/#/register">
+				<span>Регистрация</span>
+			</a>
 
 		</div>
 	</div>

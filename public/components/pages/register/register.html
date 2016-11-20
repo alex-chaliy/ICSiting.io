@@ -14,7 +14,7 @@
 						<label for="login">Логин*</label>
 				    </div>
 					<div class="input-field col s12 m4 l4">
-						<input ng-model="userData.password" id="password" type="text" class="validate">
+						<input ng-model="userData.password" id="password" type="password" class="validate">
 						<label for="password">Пароль*</label>
 				    </div>
 					<div class="input-field col s12 m4 l4">
@@ -48,6 +48,10 @@
 			</div>
 
 			<button ng-click="register(userData)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Зарегистрироваться</span> </button>
+
+			<a class="center-fluid authPage-outerLink"  href="/#/login">
+				<span>Войти на сайт</span>
+			</a>
 
 		</div>
 	</div>

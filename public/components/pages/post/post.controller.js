@@ -6,6 +6,7 @@ let postController = ($scope, $http, $location, $routeParams, ui) => {
 	console.log('logged user: ' + $scope.loggedUser.name + ', role: ' + $scope.loggedUser.role);
 
 	$scope.ui = ui;
+
 	let post_id = $routeParams.post_id;
 
 	$scope.getPost = (userData) => {

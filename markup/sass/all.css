@@ -42,7 +42,7 @@
 .txt-bold, .main-btn, .card-controls-btn, .homeSlider-btn, .homeSlider-eventLink {
   font-weight: 600; }
 
-.transition, .main-btn, .card-controls-btn, .nav-menu, .nav-menu__item, .nav-menu__item span, .nav-menu__item .caret-icon, .nav-menu__mob-header .menu-toggler, .nav-menu__mob-header .menu-toggler:hover .material-icons, .nav-menu__mob-header .arrow-right:hover .material-icons, .changeable-onMenuOpen, .dropdownContent {
+.transition, .main-btn, .card-controls-btn, .nav-menu, .nav-menu__item, .nav-menu__item span, .nav-menu__item .caret-icon, .nav-menu__mob-header .menu-toggler, .nav-menu__mob-header .menu-toggler:hover .material-icons, .nav-menu__mob-header .arrow-right:hover .material-icons, .changeable-onMenuOpen, .authPage-outerLink, .dropdownContent {
   transition: .2s; }
 
 .clearfix:after, .header:after, .header-logo:after, .authorBlock:after, .userPreview:after, .page.card:after, .card:after, .postPage-cover:after {
@@ -147,6 +147,19 @@ body, html {
   .header-logo {
     display: block;
     float: left; }
+  .header .loggedUser-img {
+    top: -.33em; }
+
+.loggedUser-img {
+  position: relative;
+  display: block;
+  width: 1.9em;
+  height: 1.9em; }
+  .loggedUser-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%; }
 
 /* nav-menu */
 .nav-menu {
@@ -164,7 +177,7 @@ body, html {
     color: #fff;
     font-size: 1em; }
   .nav-menu__item:hover span {
-    color: #0091ea; }
+    color: #00d1eb; }
 
 .nav-menu__item .caret-icon {
   position: relative;
@@ -695,6 +708,11 @@ body, html {
     position: relative;
     z-index: 0;
     padding-bottom: 1.5em; }
+  .authPage-outerLink {
+    margin-top: 1em;
+    color: #00d1eb !important; }
+  .authPage-outerLink:hover {
+    color: #eee !important; }
   .authPage .main-title {
     color: #00e5ff; }
 

@@ -40,3 +40,30 @@ let routesConfig = ($routeProvider) => {
 routesConfig.$inject = ['$routeProvider'];
 
 app.config(routesConfig);
+
+
+
+// Globals ($rootScope)
+app.run(($rootScope, $http, $location) => {
+	$rootScope.logout = (token) => {
+		$http({
+			method: 'POST',
+			url: '/logout',
+			data: {token: token}
+		})
+		.success((response) => {
+			console.log('Logout status: Success.');
+			console.log(response);
+
+			Cookies.remove('loggedUser');
+
+			setTimeout(() => {
+				location.replace('/#/login');
+			}, 1000);
+		})
+		.error((response) => {
+			console.log('Cannot logout.');
+			console.log(response);
+		});
+	}
+});

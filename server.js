@@ -107,6 +107,8 @@ db.once('open', () => {
 
 		if(!userData.role)
 			userData.role = 'user';
+		if(!userData.imgUrl)
+			userData.imgUrl = '/uploads/img/default-user-logo.jpg';
 
 		User.findOne({login: userData.login}, (err, doc) => {
 			if(doc) {

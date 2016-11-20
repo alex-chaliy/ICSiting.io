@@ -48,6 +48,24 @@ body, html {height: 100%;}
 		display: block;
 		float: left;
 	}
+
+	.loggedUser-img {top: -.33em;}
+}
+
+.loggedUser {
+	&-img {
+		position: relative;
+		display: block;
+		width: 1.9em;
+		height: 1.9em;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			border-radius: 50%;
+		}
+	}
 }
 
 /* nav-menu */
@@ -70,7 +88,7 @@ body, html {height: 100%;}
 			color: #fff;
 			font-size: 1em;
 		}
-		&:hover span {color: $skyBlue;}
+		&:hover span {color: $skyBlue-lighten - 20;}
 	}
 	.nav-menu__item .caret-icon {
 		@extend .transition;
@@ -728,6 +746,13 @@ body, html {height: 100%;}
 		z-index: 0;
 		padding-bottom: 1.5em;
 	}
+
+	&-outerLink {
+		@extend .transition;
+		margin-top: 1em;
+		color: $skyBlue-lighten - 20 !important;
+	}
+	&-outerLink:hover {color: #eee !important;}
 
 	.main-title {color: $skyBlue-lighten;}
 }

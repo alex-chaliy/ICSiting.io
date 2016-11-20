@@ -58,8 +58,8 @@ User
 {
 	"_id": "46df45g6dg4df6",
 	"name": "Борис",
-	"secondname": "Григорьевич",
-	"surname": "Довженко",
+	"secondName": "Григорьевич",
+	"surName": "Довженко",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",

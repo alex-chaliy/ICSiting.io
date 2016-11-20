@@ -37,9 +37,9 @@
 	"login": "user1",
 	"password": "pass1",
 	"name": "Борис",
-	"secondname": "Григорьевич",
-	"surname": "Довженко",
-	"coverImg": "/uploads/img/user-1.png",
+	"secondName": "Григорьевич",
+	"surName": "Довженко",
+	"coverImg": "/uploads/img/users/user-1.png",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",
@@ -51,8 +51,14 @@
 			"link": "https://goo.gl/DOz5Z1",
 			"title": "Resume. Boris Dovjenko"
 		},
-		"company": "Luxoft",
-		"position": "Junior Java Developer"
+		"company": "Sigma",
+		"position": "Javascript Developer",
+		"skills": [
+			"Node.js",
+			"Javascript",
+			"Express.js",
+			"Angular.js"
+		]
 	},
 
 	"teacherData": {

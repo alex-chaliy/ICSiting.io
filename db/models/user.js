@@ -24,7 +24,8 @@ const UserSchema = new Schema({
 			title: String
 		},
 		company: String,
-		position: String
+		position: String,
+		skills: [String]
 	},
 
 	techerData: {

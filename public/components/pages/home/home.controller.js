@@ -22,7 +22,7 @@ let homeController = ($scope, $http, $location, ui) => {
 				bgColor: '#64dd17'
 			},
 			bgImg: {
-				url: '/uploads/img/img-7.jpg'
+				url: '/uploads/img/slider/img-7.jpg'
 			}
 		},
 		{
@@ -39,7 +39,7 @@ let homeController = ($scope, $http, $location, ui) => {
 				bgColor: '#ffab00'
 			},
 			bgImg: {
-				url: '/uploads/img/img-12.jpg'
+				url: '/uploads/img/slider/img-12.jpg'
 			}
 		},
 		{
@@ -56,7 +56,7 @@ let homeController = ($scope, $http, $location, ui) => {
 				bgColor: '#0091ea'
 			},
 			bgImg: {
-				url: '/uploads/img/img-8.jpg'
+				url: '/uploads/img/slider/img-8.jpg'
 			}
 		},
 	];

@@ -123,7 +123,7 @@ body {
 	font-family: Roboto, sans-serif;
 	font-size: $base-font-size;
 	background-color: #eee;
-	background: url(/uploads/img/circuit-50.png);
+	background: url(/uploads/img/site/circuit-50.png);
 	background-attachment: fixed;
 }
 @media (max-width: 320px) {body {font-size: 7px} }
@@ -298,7 +298,7 @@ body, html {height: 100%;}
 		float: left;
 		color: #fff;
 		letter-spacing: 1px;
-		padding: 1em 0 0 .67em;
+		padding: 1.38em 0 0 .67em;
 		span {font-size: 1.5em;}
 	}
 
@@ -677,6 +677,7 @@ body, html {height: 100%;}
 	padding-top: 1em;
 	border-bottom: 1px solid #cecece;
 	padding-bottom: 1em;
+	min-height: 5em;
 
 	&-img {
 		position: absolute;
@@ -705,6 +706,11 @@ body, html {height: 100%;}
 		padding-bottom: .8em;
 
 		span {font-size: 1.2em;}
+
+		.material-icons {
+			position: relative;
+			top: .25em;
+		}
 	}
 
 	&-param {
@@ -720,7 +726,7 @@ body, html {height: 100%;}
 			color: #333;
 		}
 		a.param-value {	
-			color: #333;
+			span {color: $skyBlue;}
 		}
 	}
 }

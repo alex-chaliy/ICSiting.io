@@ -108,7 +108,7 @@ body {
   font-family: Roboto, sans-serif;
   font-size: 16px;
   background-color: #eee;
-  background: url(/uploads/img/circuit-50.png);
+  background: url(/uploads/img/site/circuit-50.png);
   background-attachment: fixed; }
 
 @media (max-width: 320px) {
@@ -265,7 +265,7 @@ body, html {
   float: left;
   color: #fff;
   letter-spacing: 1px;
-  padding: 1em 0 0 .67em; }
+  padding: 1.38em 0 0 .67em; }
   .nav-menu__mob-header .mob-header-title span {
     font-size: 1.5em; }
 
@@ -581,7 +581,8 @@ body, html {
   margin-top: 1.4em;
   padding-top: 1em;
   border-bottom: 1px solid #cecece;
-  padding-bottom: 1em; }
+  padding-bottom: 1em;
+  min-height: 5em; }
   .userPreview-img {
     position: absolute;
     top: 1em;
@@ -603,6 +604,9 @@ body, html {
     padding-bottom: .8em; }
     .userPreview-name span {
       font-size: 1.2em; }
+    .userPreview-name .material-icons {
+      position: relative;
+      top: .25em; }
   .userPreview-param {
     line-height: 1em;
     padding-bottom: .5em; }
@@ -611,8 +615,8 @@ body, html {
       color: #aaa; }
     .userPreview-param .param-value {
       color: #333; }
-    .userPreview-param a.param-value {
-      color: #333; }
+    .userPreview-param a.param-value span {
+      color: #0091ea; }
 
 /* Page */
 .page {

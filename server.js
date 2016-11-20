@@ -108,7 +108,7 @@ db.once('open', () => {
 		if(!userData.role)
 			userData.role = 'user';
 		if(!userData.imgUrl)
-			userData.imgUrl = '/uploads/img/default-user-logo.jpg';
+			userData.imgUrl = '/uploads/img/defaults/default-user-logo.jpg';
 
 		User.findOne({login: userData.login}, (err, doc) => {
 			if(doc) {
@@ -233,7 +233,7 @@ db.once('open', () => {
 		delete postData.token;
 
 		if(!postData.coverImg)
-			postData.coverImg = '/uploads/img/default-cover.jpg';
+			postData.coverImg = '/uploads/img/defaults/default-cover.jpg';
 
 		let params = {
 			token: token,
@@ -313,9 +313,6 @@ db.once('open', () => {
 	app.delete('/post/:id', (request, response) => {
 		let id = request.params.id;
 		let token = request.body.token;
-
-		console.log(request.body);
-		console.log(id);
 
 		let params = {
 			token: token,

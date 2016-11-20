@@ -342,7 +342,7 @@ body, html {
     float: left;
     width: 100%;
     height: 100%;
-    background-image: url(/uploads/img/img-7.jpg);
+    background-image: url(/uploads/img/slider/img-7.jpg);
     background-size: cover; }
   .homeSlider-itemContent {
     background: rgba(0, 0, 0, 0.4);
@@ -698,7 +698,7 @@ body, html {
 /* end Page */
 /* authPage */
 .authPage {
-  background-image: url(/uploads/img/img-8.jpg);
+  background-image: url(/uploads/img/site/bg-authPage.jpg);
   background-size: cover;
   width: 100%;
   height: 100%;

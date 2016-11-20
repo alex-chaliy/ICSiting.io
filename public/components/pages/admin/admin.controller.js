@@ -15,6 +15,7 @@ let adminController = ($scope, $http, $location, ui) => {
 		$scope.createPost = (postData) => {
 			if(postData.title && postData.parts[0]) {
 				postData.token = $scope.loggedUser.token;
+				if($scope.tagsString) postData.tags = $scope.tagsString.split(' ');
 				$http({
 					method: 'POST',
 					url: '/post',

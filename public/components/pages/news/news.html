@@ -27,12 +27,12 @@
 				</div>
 
 				<div class="authorBlock">
-					<a class="authorBlock-img" href="">
-						<img src="/uploads/img/users/user-logo-small.jpg" alt="">
+					<a class="authorBlock-img" href="/#/user?user_id={{new.creator._id}}">
+						<img src="{{new.creator.imgUrl}}" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
-						<a class="authorBlock-name" href="https://vk.com/producedbysoul">
-							<span> Алексей Чалый </span>
+						<a class="authorBlock-name" href="/#/user?user_id={{new.creator._id}}">
+							<span> {{new.creator.name}} {{new.creator.surName}} </span>
 						</a>
 						<span class="authorBlock-date" href="">
 							<span> {{new.creationDate | date:'dd MMM, HH:mm'}} </span>

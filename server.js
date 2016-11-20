@@ -105,8 +105,10 @@ db.once('open', () => {
 		delete userData.password;
 		userData.token = saltGenerator(100);
 
+		// TODO: vulnerability -> only admin can create users with role 'admin' and 'moderator'
 		if(!userData.role)
 			userData.role = 'user';
+
 		if(!userData.imgUrl)
 			userData.imgUrl = '/uploads/img/defaults/default-user-logo.jpg';
 
@@ -266,19 +268,56 @@ db.once('open', () => {
 		  		response.send(err.errmsg);
 		  	}
 		  	if(docs) {
-	  			response.send(docs);
+		  		if(docs.length === 0)
+		  			response.status(200).send(docs);
+	  			// get creators for posts
+		  		let i = 0;
+		  		_.forEach(docs, (el) => {
+		  			User.findOne({ _id: el.creator_id }, (err, user) => {
+		  				if (err)
+		  			  		response.status(403).send(err.errmsg);
+		  				if(user) {
+		  					el.creator_id = undefined;
+		  					user = user || {};
+		  					el.creator = {};
+		  					// choose only needed properties
+		  					el.creator._id = user._id;
+		  					el.creator.name = user.name;
+		  					el.creator.surName = user.surName;
+		  					el.creator.imgUrl = user.imgUrl;
+		  				}
+
+		  				i++;
+		  				if(i === docs.length)
+		  					response.status(200).send(docs);
+		  			});	
+		  		});
 		  	}
 		});
 	});
 	app.get('/post/:id', (request, response) => {
 		let id = request.params.id;
-		Post.findOne({_id: id}, (err, doc) => {
+		Post.findOne({_id: id}, (err, post) => {
 			if (err) {
 		  		console.log('/post/:id | GET | Error was occurred');
 		  		response.status(403).send(err.errmsg);
 		  	}
-		  	if(doc) {
-	  			response.status(200).send(doc);
+		  	if(post) {
+		  		User.findOne({ _id: post.creator_id }, (err, user) => {
+		  			if (err)
+		  		  		response.status(403).send(err.errmsg);
+		  			if(user) {
+		  				post.creator_id = undefined;
+		  				user = user || {};
+		  				post.creator = {};
+		  				// choose only needed properties
+		  				post.creator._id = user._id;
+		  				post.creator.name = user.name;
+		  				post.creator.surName = user.surName;
+		  				post.creator.imgUrl = user.imgUrl;
+		  			}
+	  				response.status(200).send(post);
+		  		});	
 		  	}
 		});
 	});

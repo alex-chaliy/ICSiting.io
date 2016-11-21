@@ -609,6 +609,11 @@ body, html {height: 100%;}
 		.param-value {	
 			@extend .txt-semibold;
 			color: #333;
+
+			span.comaDevider {
+				color: inherit;
+				font-size: inherit;
+			}
 		}
 		a.param-value {	
 			span {color: $skyBlue;}
@@ -701,6 +706,12 @@ body, html {height: 100%;}
 		border-bottom: 1px solid #e5e5e5;
 
 		span {font-size: 1.4em;}
+
+		.material-icons {
+			position: relative;
+			top: .1em;
+			color: $skyBlue;
+		}
 	}
 
 	&-param {
@@ -714,9 +725,14 @@ body, html {height: 100%;}
 		.param-value {	
 			@extend .txt-semibold;
 			color: #333;
+
+			span.comaDevider {
+				color: inherit;
+				font-size: inherit;
+			}
 		}
 		a.param-value {	
-			color: #333;
+			span {color: $skyBlue;}
 		}
 	}
 

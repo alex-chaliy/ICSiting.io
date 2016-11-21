@@ -169,6 +169,10 @@ db.once('open', () => {
 		  			el.passwordHash = undefined;
 		  			el.salt = undefined;
 		  			el.token = undefined;
+
+		  			// TODO: only owner of contacts can see contacts. Owner can allow to display his contacts to all registered users
+		  			el.contacts = undefined;
+
 		  			i++;
 		  			if(i === docs.length)
 		  				response.send(docs);

@@ -13,6 +13,7 @@ const UserSchema = new Schema({
 	surName: String,
 	imgUrl: String,
 	city: String,
+	aboutMyself: String,
 	contacts: {
 		skype: String,
 		phone: String,
@@ -48,7 +49,11 @@ const UserSchema = new Schema({
 	token: String,
 
 	registrationDate: { type: Date, default: Date.now },
-	birthday: Date
+
+	personalDatails: {
+		hobbies: [String],
+		birthday: Date
+	}
 });
 
 const User = mongoose.model('User', UserSchema);

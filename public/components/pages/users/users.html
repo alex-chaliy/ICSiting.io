@@ -25,11 +25,11 @@
 					</div>
 
 					<div ng-repeat="user in users|filter:searchQuery" class="userPreview">
-						<a class="userPreview-img" href="">
-							<img src="{{user.imgUrl}}" alt="">
+						<a class="userPreview-img" href="/#/user?user_id={{user._id}}">
+							<img ng-src="{{user.imgUrl}}" alt="">
 						</a>
 						<div class="userPreview-info">
-							<a class="userPreview-name" href="">
+							<a class="userPreview-name" href="/#/user?user_id={{user._id}}">
 								<span> {{user.name}} {{user.secondName}} {{user.surName}}
 									<i ng-if="user.verified === true" class="material-icons">verified_user</i>
 								 </span>

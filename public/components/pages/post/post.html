@@ -8,7 +8,7 @@
 		<div id="post-{{post._id}}" class="card post">
 			<div class="authorBlock">
 				<a class="authorBlock-img" href="/#/user?user_id={{post.creator._id}}">
-					<img src="{{post.creator.imgUrl}}" alt="">
+					<img ng-src="{{post.creator.imgUrl}}" alt="">
 				</a>
 				<div class="authorBlock-authorAndDate">
 					<a class="authorBlock-name" href="/#/user?user_id={{post.creator._id}}">
@@ -32,7 +32,7 @@
 			<div class="postPage-titleWrapper">
 				<div class="postPage-titleContent valign-wrapper">
 					<h3 class="postPage-title valign"> 
-						<a href="">
+						<a href="/#/post?post_id={{new._id}}">
 							<span ng-if="post.eventData" class="label">
 								<span>Event <i class="material-icons">event</i></span>
 							</span>
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="postPage-cover">
-				<img src="{{post.coverImg}}" alt="">
+				<img ng-src="{{post.coverImg}}" alt="">
 			</div>
 
 			<div class="card-content clearfix">

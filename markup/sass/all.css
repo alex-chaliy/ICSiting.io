@@ -615,6 +615,9 @@ body, html {
       color: #aaa; }
     .userPreview-param .param-value {
       color: #333; }
+      .userPreview-param .param-value span.comaDevider {
+        color: inherit;
+        font-size: inherit; }
     .userPreview-param a.param-value span {
       color: #0091ea; }
 
@@ -677,6 +680,10 @@ body, html {
     border-bottom: 1px solid #e5e5e5; }
     .page-name span {
       font-size: 1.4em; }
+    .page-name .material-icons {
+      position: relative;
+      top: .1em;
+      color: #0091ea; }
   .page-param {
     line-height: 1em;
     padding-bottom: .4em; }
@@ -685,8 +692,11 @@ body, html {
       color: #aaa; }
     .page-param .param-value {
       color: #333; }
-    .page-param a.param-value {
-      color: #333; }
+      .page-param .param-value span.comaDevider {
+        color: inherit;
+        font-size: inherit; }
+    .page-param a.param-value span {
+      color: #0091ea; }
   .page-title {
     line-height: 1em;
     padding-bottom: .8em;

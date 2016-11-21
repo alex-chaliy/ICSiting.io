@@ -1,6 +1,12 @@
 'use strict';
 
 angular.module('app').factory('ui', () => {
+
+	let initMaterializeComponents = () => {
+		$('.collapsible').collapsible();
+		console.log('inintialized componets of MaterializeCSS');
+	}
+
 	let toggleClass = (blockId, classForToggle, delay = 1) => {
 		setTimeout(() => {
 			let block = document.getElementById(blockId);
@@ -65,6 +71,7 @@ angular.module('app').factory('ui', () => {
 		toggleClass: toggleClass,
 		toggleMenu: toggleMenu,
 		scrollTo: scrollTo,
-		Slider: Slider
+		Slider: Slider,
+		initMaterializeComponents: initMaterializeComponents
 	}
 });

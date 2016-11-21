@@ -17,6 +17,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/users/users.html',
 			controller: 'usersController'
 		})
+		.when('/user', {
+			templateUrl: 'components/pages/user/user.html',
+			controller: 'userController'
+		})
 		.when('/login', {
 			templateUrl: 'components/pages/login/login.html',
 			controller: 'loginController'

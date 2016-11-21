@@ -36,7 +36,7 @@
 	<div ng-if="loggedUser.role" class="nav-menu__item">
 		<div class="loggedUser">
 			<a class="loggedUser-img" href="/#/admin">
-				<img ng-if="loggedUser.imgUrl" src="{{loggedUser.imgUrl}}" alt="">
+				<img ng-if="loggedUser.imgUrl" ng-src="{{loggedUser.imgUrl}}" alt="">
 			</a>
 		</div>
 	</div>

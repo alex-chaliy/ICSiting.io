@@ -38,10 +38,10 @@
 		<div ng-repeat="new in news" class="col l6 m6 s12 post-wrapper" id="post-{{new._id}}">
 			<div class="card post">
 				<div class="post-image">
-					<img src="{{new.coverImg}}" alt="">
+					<img ng-src="{{new.coverImg}}" alt="">
 					<div class="post-imageContent valign-wrapper">
 						<h3 class="post-title valign"> 
-							<a href="">
+							<a href="/#/post?post_id={{new._id}}">
 								<span ng-if="new.eventData" class="label">
 									<span>Event <i class="material-icons">event</i></span>
 								</span>
@@ -56,7 +56,7 @@
 
 				<div class="authorBlock">
 					<a class="authorBlock-img" href="/#/user?user_id={{new.creator._id}}">
-						<img src="{{new.creator.imgUrl}}" alt="">
+						<img ng-src="{{new.creator.imgUrl}}" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
 						<a class="authorBlock-name" href="/#/user?user_id={{new.creator._id}}">
@@ -114,7 +114,7 @@
 
 			<div class="card post">
 				<div class="post-image">
-					<img src="/uploads/img/img-10.jpg">
+					<img ng-src="/uploads/img/img-10.jpg">
 					<div class="post-imageContent valign-wrapper">
 						<h3 class="post-title valign"> 
 							<a href="">
@@ -132,7 +132,7 @@
 
 				<div class="authorBlock">
 					<a class="authorBlock-img" href="">
-						<img src="/uploads/img/user-logo-small.jpg" alt="">
+						<img ng-src="/uploads/img/user-logo-small.jpg" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
 						<a class="authorBlock-name" href="">
@@ -186,7 +186,7 @@
 
 			<div class="card post">
 				<div class="post-image">
-					<img src="/uploads/img/img-11.jpg">
+					<img ng-src="/uploads/img/img-11.jpg">
 					<div class="post-imageContent valign-wrapper">
 						<h3 class="post-title valign"> 
 							<a href="">
@@ -198,7 +198,7 @@
 
 				<div class="authorBlock">
 					<a class="authorBlock-img" href="">
-						<img src="/uploads/img/user-logo-small.jpg" alt="">
+						<img ng-src="/uploads/img/user-logo-small.jpg" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
 						<a class="authorBlock-name" href="">
@@ -255,7 +255,7 @@
 
 			<div class="card post">
 				<div class="post-image">
-					<img src="/uploads/img/img-7.jpg">
+					<img ng-src="/uploads/img/img-7.jpg">
 					<div class="post-imageContent valign-wrapper">
 						<h3 class="post-title valign"> 
 							<a href="">
@@ -267,7 +267,7 @@
 
 				<div class="authorBlock">
 					<a class="authorBlock-img" href="">
-						<img src="/uploads/img/user-logo-small.jpg" alt="">
+						<img ng-src="/uploads/img/user-logo-small.jpg" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
 						<a class="authorBlock-name" href="">
@@ -319,7 +319,7 @@
 
 			<div class="card post">
 				<div class="post-image">
-					<img src="/uploads/img/img-9.jpg">
+					<img ng-src="/uploads/img/img-9.jpg">
 					<div class="post-imageContent valign-wrapper">
 						<h3 class="post-title valign"> 
 							<a href="">
@@ -331,7 +331,7 @@
 
 				<div class="authorBlock">
 					<a class="authorBlock-img" href="">
-						<img src="/uploads/img/user-logo-small.jpg" alt="">
+						<img ng-src="/uploads/img/user-logo-small.jpg" alt="">
 					</a>
 					<div class="authorBlock-authorAndDate">
 						<a class="authorBlock-name" href="">

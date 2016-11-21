@@ -40,6 +40,28 @@ let newsController = ($scope, $http, $location, ui) => {
 			console.log(response);
 		});
 	}
+
+
+
+	$scope.updatePost = (postId, token) => {
+		$http({
+	        headers: {"Content-Type": "application/json;charset=utf-8"},
+			method: 'PUT',
+			url: '/post/' + postId,
+			data:  {token: token}
+		})
+		.success((response) => {
+			$scope.actionStatus = 'Новость успешно отредактирована';
+			console.log('Update Post - status: Success.');
+
+			$('#post-' + postId).fadeOut(500);
+		})
+		.error((response) => {
+			$scope.actionStatus = 'Нет доступа к серверу или нет прав на редактирование новости';
+			console.log('Cannot Update Post.');
+			console.log(response);
+		});
+	}
 }
 newsController.$inject = [
 	'$scope',

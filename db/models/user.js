@@ -4,14 +4,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+	role: String,
 	verified: Boolean,
-	login: { type:String, unique: true, required: true, dropDups: true },
+	login: { type: String, unique: true, required: true, dropDups: true },
 	passwordHash: String,
 	name: String,
 	secondName: String,
-	surname: String,
+	surName: String,
 	imgUrl: String,
 	city: String,
+	aboutMyself: String,
 	contacts: {
 		skype: String,
 		phone: String,
@@ -23,7 +25,8 @@ const UserSchema = new Schema({
 			title: String
 		},
 		company: String,
-		position: String
+		position: String,
+		skills: [String]
 	},
 
 	techerData: {
@@ -46,7 +49,11 @@ const UserSchema = new Schema({
 	token: String,
 
 	registrationDate: { type: Date, default: Date.now },
-	birthday: Date
+
+	personalDatails: {
+		hobbies: [String],
+		birthday: Date
+	}
 });
 
 const User = mongoose.model('User', UserSchema);

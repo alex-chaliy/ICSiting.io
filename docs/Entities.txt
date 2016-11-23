@@ -8,6 +8,12 @@
 	User - Subject --- many to many
 ************************
 
+Роли пользователей: 
+- admin
+- moderator
+- user
+- невошедший - в поле role будет пустая строка
+
 Post
 {
 	_id: 'sfsd6f4s6d',
@@ -52,8 +58,8 @@ User
 {
 	"_id": "46df45g6dg4df6",
 	"name": "Борис",
-	"secondname": "Григорьевич",
-	"surname": "Довженко",
+	"secondName": "Григорьевич",
+	"surName": "Довженко",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",

@@ -1,3 +1,31 @@
 <title>Вход на сайт</title>
 
-<h2>Вход на сайт</h2>
+<div class="authPage">
+	<div class="authPage-content">
+		<h2 class="main-title"> <span>Вход на сайт</span> </h2>
+
+		<div class="container">
+			<div class="auth-hint white-text">{{loginStatus}}</div>
+
+			<div class="row">
+				<div class="col l12 m12 s12 card">
+					<div class="input-field col s12 m6 l6">
+						<input ng-model="userData.login" id="login" type="text" class="validate">
+						<label for="login">Логин*</label>
+				    </div>
+					<div class="input-field col s12 m6 l6">
+						<input ng-model="userData.password" id="password" type="password" class="validate">
+						<label for="password">Пароль*</label>
+				    </div>
+				</div>
+			</div>
+
+			<button ng-click="login(userData)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Войти</span> </button>
+
+			<a class="center-fluid authPage-outerLink"  href="/#/register">
+				<span>Регистрация</span>
+			</a>
+
+		</div>
+	</div>
+</div>

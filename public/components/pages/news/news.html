@@ -1,0 +1,78 @@
+<title>Новости</title>
+
+<ng-include class="skyBlue" src="'components/partials/header.html'"></ng-include>
+
+<div class="container l-950 m-full changeable-onMenuOpen">
+	<h3 class="main-title upper"> <span>Новости</span> </h3>
+
+	<div class="newsBlock row">
+		<div class="actionStatus black-text center-align">{{actionStatus}}</div>
+		<div ng-repeat="new in news" class="col l6 m6 s12 post-wrapper" id="post-{{new._id}}">
+			<div class="card post">
+				<div class="post-image">
+					<img ng-src="{{new.coverImg}}" alt="">
+					<div class="post-imageContent valign-wrapper">
+						<h3 class="post-title valign"> 
+							<a href="/#/post?post_id={{new._id}}">
+								<span ng-if="new.eventData" class="label">
+									<span>Event <i class="material-icons">event</i></span>
+								</span>
+								<span ng-if="new.eventData" class="event-dateAndPlace">
+									<span>{{new.eventData.date | date:'dd.MM.yyyy, HH:mm EEEE'}}, {{new.eventData.place}}</span>
+								</span>
+								<span>{{new.title}}</span>
+							</a>
+						</h3>
+					</div>
+				</div>
+
+				<div class="authorBlock">
+					<a class="authorBlock-img" href="/#/user?user_id={{new.creator._id}}">
+						<img ng-src="{{new.creator.imgUrl}}" alt="">
+					</a>
+					<div class="authorBlock-authorAndDate">
+						<a class="authorBlock-name" href="/#/user?user_id={{new.creator._id}}">
+							<span> {{new.creator.name}} {{new.creator.surName}} </span>
+						</a>
+						<span class="authorBlock-date" href="">
+							<span> {{new.creationDate | date:'dd MMM, HH:mm'}} </span>
+						</span>
+					</div>
+
+					<button ng-focus="ui.toggleClass('dropdown-' + new._id, 'active')" ng-blur="ui.toggleClass('dropdown-' + new._id, 'active', 100)" class="authorBlock-moreBtn waves-effect waves-light">
+						<i class="material-icons"> more_vert </i>
+
+						<ul id="dropdown-{{new._id}}" class="dropdownContent">
+							<li> <a href="/#/post?post_id={{new._id}}"> <span> Читать далее </span> </a> </li>
+							<li ng-click="deletePost(new._id, loggedUser.token)" ng-if="loggedUser.role==='admin' || loggedUser.role==='moderator'"> <span> Удалить новость </span> </li>
+						</ul>
+					</button>
+				</div>
+
+				<div class="card-content">
+					<div class="text-preview clearfix">
+						<div class="post-tags">
+							<span ng--repeat="tag in new.tags" class="post-tag"> <span>#{{tag}}</span> </span>
+						</div>
+						<div ng-repeat="part in new.parts">{{part}}</div>
+					</div>
+				</div>
+
+				<div ng-if="" class="likeAndComments">
+					<div class="shareBlock txt-light">
+						<i class="material-icons"> share </i>
+						<span> Поделились </span>
+						<span class="txt-bold"> 105 </span>
+					</div>
+
+					<button class="btnComments"> <span>Комментарии (3)</span> </button>
+				</div>
+
+				<div class="card-controls">
+					<a href="{{new.eventData.registrationLink}}" ng-if="new.eventData" class="card-controls-btn btn-half waves-effect waves-light"> <span>Записаться на событие</span> </a>
+					<a href="/#/post?post_id={{new._id}}" ng-class="{'btn-half': new.eventData}" class="card-controls-btn btn-white  waves-effect waves-light"> <span>Читать далее</span> </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

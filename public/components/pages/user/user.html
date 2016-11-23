@@ -1,0 +1,88 @@
+<title>{{user.name}} {{user.surName}}</title>
+
+<ng-include class="" src="'components/partials/header.html'"></ng-include>
+
+<div class="container l-950 m-full changeable-onMenuOpen">
+	<div class="page userPage card">
+		<div class="narrowColumnWrapper">
+			<div class="narrowColumn">
+				<a class="page-photo" href="">
+					<img ng-src="{{user.imgUrl}}" alt="">
+				</a>
+			</div>
+		</div>
+
+		<div class="wideColumnWrapper">
+			<div class="wideColumn">
+
+				<h4 class="page-name">
+					<span> {{user.name}} {{user.secondName}} {{user.surName}}
+						<i ng-if="user.verified === true" class="material-icons">verified_user</i>
+					 </span>
+				</h4>
+				
+				<div ng-if="user.city" class="page-param">
+					<span> Город: </span>
+					<span class="param-value"> {{user.city}} </span>
+				</div>
+
+				<div ng-if="user.job.resume.link" class="page-param">
+					<span> Резюме: </span>
+					<a class="param-value" href="{{user.job.resume.link}}">
+						<span ng-if="user.job.resume.title"> {{user.job.resume.title}} </span>
+						<span ng-if="!user.job.resume.title"> {{user.job.resume.link}} </span>
+					</a>
+				</div>
+				
+				<div ng-if="user.job.company" class="page-param">
+					<span> Компания: </span>
+					<span class="param-value"> {{user.job.company}} </span>
+				</div>
+				
+				<div ng-if="user.job.position" class="page-param">
+					<span> Должность: </span>
+					<span class="param-value"> {{user.job.position}} </span>
+				</div>
+				
+				<div ng-if="user.job.skills[0]" class="page-param">
+					<span> Навыки: </span>
+					<span class="param-value" ng-repeat="skill in user.job.skills">
+						{{skill}} <span ng-if="$index < user.job.skills.length - 1">&#8226;</span>
+					</span>
+				</div>
+
+				<ul class="collapsible clearfix" data-collapsible="expandable">
+				    <li ng-if="user.personalDatails.hobbies[0] || user.personalDatails.birthday">
+						<div class="collapsible-header">
+							<i class="material-icons">more_horiz</i>
+							Подробная информация
+							</div>
+						<div class="collapsible-body">
+							<div ng-if="user.personalDatails.hobbies[0]" class="page-param">
+								<span> Увлечения: </span>
+								<span class="param-value" ng-repeat="skill in user.personalDatails.hobbies">
+									{{skill}}<span class="comaDevider" ng-if="$index < user.personalDatails.hobbies.length - 1">,</span>
+								</span>
+							</div>
+						</div>
+				   </li>
+
+				   <li ng-if="user.aboutMyself">
+						<div class="collapsible-header">
+							<i class="material-icons">person_outline</i> 
+							О себе
+							</div>
+						<div class="collapsible-body">
+							<p>
+								<span>
+									{{user.aboutMyself}}
+								</span>
+							</p>
+						</div>
+				   </li>
+				 </ul>
+
+			</div>
+		</div>
+	</div>
+</div>

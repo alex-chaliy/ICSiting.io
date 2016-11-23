@@ -1,8 +1,9 @@
 <title>Поиск людей</title>
 
-<h3 class="main-title"> <span>Поиск людей</span> </h3>
+<ng-include class="skyBlue" src="'components/partials/header.html'"></ng-include>
 
-<div class="container">
+<div class="container changeable-onMenuOpen">
+	<h3 class="main-title"> <span>Поиск людей</span> </h3>
 	<div class="row">
 		<div class="col l12 m12 s12 post-wrapper">
 			<div class="card">
@@ -17,25 +18,53 @@
 					</h4>
 					<div class="card-headerInput">
 						<label for="searchInput">
-							<span>Введите один из параметров: имя, фамилия, группа, компания, год поступления, год выпуска, город, год рождения, возраст, пол </span>
+							<span>Введите один из параметров: профессиональные навыки, имя, фамилия, группа, компания, год поступления, год выпуска, город, год рождения, возраст </span>
 						</label>
 						<span ng-init="searchQuery = ''"></span>
-						<input ng-model="searchQuery" id="searchInput" type="text" placeholder="Найти одногруппника...">
-						{{searchQuery}}
+						<input ng-model="searchQuery" id="searchInput" type="text" placeholder="Найти человека...">
 					</div>
 
 					<div ng-repeat="user in users|filter:searchQuery" class="userPreview">
-						<a class="userPreview-img" href="">
-							<img src="/uploads/img/user-logo-small.jpg" alt="">
+						<a class="userPreview-img" href="/#/user?user_id={{user._id}}">
+							<img ng-src="{{user.imgUrl}}" alt="">
 						</a>
 						<div class="userPreview-info">
-							<a class="userPreview-name" href="">
-								<span> {{user.name}} {{user.surname}} </span>
+							<a class="userPreview-name" href="/#/user?user_id={{user._id}}">
+								<span> {{user.name}} {{user.secondName}} {{user.surName}}
+									<i ng-if="user.verified === true" class="material-icons">verified_user</i>
+								 </span>
 							</a>
-							<div class="userPreview-param">
+	
+							<div ng-if="user.city" class="userPreview-param">
 								<span> Город: </span>
 								<span class="param-value"> {{user.city}} </span>
 							</div>
+
+							<div ng-if="user.job.resume.link" class="userPreview-param">
+								<span> Резюме: </span>
+								<a class="param-value" href="{{user.job.resume.link}}">
+									<span ng-if="user.job.resume.title"> {{user.job.resume.title}} </span>
+									<span ng-if="!user.job.resume.title"> {{user.job.resume.link}} </span>
+								</a>
+							</div>
+	
+							<div ng-if="user.job.company" class="userPreview-param">
+								<span> Компания: </span>
+								<span class="param-value"> {{user.job.company}} </span>
+							</div>
+	
+							<div ng-if="user.job.position" class="userPreview-param">
+								<span> Должность: </span>
+								<span class="param-value"> {{user.job.position}} </span>
+							</div>
+	
+							<div ng-if="user.job.skills[0]" class="userPreview-param">
+								<span> Навыки: </span>
+								<span class="param-value" ng-repeat="skill in user.job.skills">
+									{{skill}} <span ng-if="$index < user.job.skills.length - 1">&#8226;</span>
+								</span>
+							</div>
+
 						</div>
 					</div>
 

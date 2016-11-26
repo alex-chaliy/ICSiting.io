@@ -781,6 +781,23 @@ body, html {
   width: auto;
   padding: 0 .5em; }
 
+.dropdownContent--bottom.active {
+  top: 100%;
+  top: calc(100% + 5px); }
+
+.dropdownContent--left.active {
+  right: 100%;
+  right: calc(100% + 5px); }
+
+.dropdownContent--right.active {
+  right: auto;
+  left: 100%;
+  left: calc(100% + 5px); }
+
+.dropdownContent--top.active {
+  top: -100%;
+  top: calc(-100% - 5px); }
+
 .dropdownContent li {
   padding: .2em 0;
   display: table;

@@ -26,6 +26,25 @@ let profileController = ($scope, $http, $location, $routeParams, ui) => {
 	}
 	$scope.getUser();
 
+	$scope.updateUser = (userData) => {
+		userData.token = $scope.loggedUser.token;
+		$http({
+	        headers: {"Content-Type": "application/json;charset=utf-8"},
+			method: 'PUT',
+			url: '/user/' + userData._id,
+			data: userData
+		})
+		.success((response) => {
+			$scope.actionStatus = 'Данные пользователя успешно обновлены';
+			console.log('Update User - status: Success.');
+		})
+		.error((response) => {
+			$scope.actionStatus = 'Нет доступа к серверу или нет прав на редактирование пользователя';
+			console.log('Cannot Update User.');
+			console.log(response);
+		});
+	}
+
 	$scope.deleteUser = (userId, token) => {
 		$http({
 	        headers: {"Content-Type": "application/json;charset=utf-8"},
@@ -37,7 +56,7 @@ let profileController = ($scope, $http, $location, $routeParams, ui) => {
 			$scope.actionStatus = 'Пользователь успешно удален';
 			console.log('Delete User - status: Success.');
 
-			$('#user-' + postId).fadeOut(500);
+			$('#user-' + userData._id).fadeOut(500);
 			setTimeout(() => {
 				location.replace('/#/users');
 			}, 1000);

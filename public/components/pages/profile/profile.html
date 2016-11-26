@@ -3,6 +3,9 @@
 <ng-include class="" src="'components/partials/header.html'"></ng-include>
 
 <div class="container l-950 m-full changeable-onMenuOpen">
+	<br>
+	<div class="actionStatus black-text center-align">{{actionStatus}}</div>
+
 	<div class="page userPage card">
 		<div class="narrowColumnWrapper">
 			<div class="narrowColumn">
@@ -20,7 +23,15 @@
 						<i ng-if="user.verified === true" class="material-icons">verified_user</i>
 					 </span>
 				</h4>
-				
+
+				<div class="input-field">
+					<input ng-model="user.name" id="_name" type="text" class="validate">
+					<label class="active" for="_name">Имя</label>
+				</div>
+
+				<button ng-click="updateUser(user)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Сохранить</span> </button>
+
+
 				<div ng-if="user.city" class="page-param">
 					<span> Город: </span>
 					<span class="param-value"> {{user.city}} </span>

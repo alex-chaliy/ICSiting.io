@@ -13,7 +13,18 @@ var Config = {
 			name: 'test'
 		}
 	},
-	production: {}
+	production: {
+		server: {
+			protocol: 'http://',
+			adress: 'site.com',
+			port: 4351
+		}, 
+		db: {
+			adress: 'site.com',
+			port: '27017',
+			name: 'ics'
+		}
+	}
 };
 
 module.exports = Config.dev;

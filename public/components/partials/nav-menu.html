@@ -42,6 +42,7 @@
 
 		<ul id="dropdown-loggedUser" class="dropdownContent dropdownContent--bottom">
 			<li ng-if="loggedUser.role === 'admin'"> <a href="/#/admin"> <span> Панель Администратора </span> </a> </li>
+			<li> <a href="/#/users?user_id={{loggedUser._id}}"> <span> Моя Страница </span> </a> </li>
 			<li> <a href="/#/profile?user_id={{loggedUser._id}}"> <span> Мои Настройки </span> </a> </li>
 		</ul>
 	</button>

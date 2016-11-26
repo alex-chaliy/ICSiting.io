@@ -33,11 +33,16 @@
 		<span>Выйти</span>
 	</div>
 
-	<div ng-if="loggedUser.role" class="nav-menu__item">
+	<button ng-if="loggedUser.role" class="nav-menu__item item-loggedUser" ng-click="ui.toggleClass('dropdown-loggedUser', 'active', 200)" >
 		<div class="loggedUser">
-			<a class="loggedUser-img" href="/#/admin">
+			<a class="loggedUser-img">
 				<img ng-if="loggedUser.imgUrl" ng-src="{{loggedUser.imgUrl}}" alt="">
 			</a>
 		</div>
-	</div>
+
+		<ul id="dropdown-loggedUser" class="dropdownContent dropdownContent--bottom">
+			<li ng-if="loggedUser.role === 'admin'"> <a href="/#/admin"> <span> Панель Администратора </span> </a> </li>
+			<li> <a href="/#/profile?user_id={{loggedUser._id}}"> <span> Мои Настройки </span> </a> </li>
+		</ul>
+	</button>
 </div>

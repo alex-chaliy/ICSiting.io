@@ -24,74 +24,60 @@
 					 </span>
 				</h4>
 
-				<div class="input-field">
-					<input ng-model="user.name" id="_name" type="text" class="validate">
-					<label class="active" for="_name">Имя</label>
+				<div class="row">
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.name" id="_name" type="text" class="validate">
+						<label class="active" for="_name">Имя</label>
+					</div>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.secondName" id="secondName" type="text" class="validate">
+						<label class="active" for="secondName">Отчество</label>
+					</div>
+					<div class="input-field col s8 m8 l8">
+						<input ng-model="user.surName" id="surName" type="text" class="validate">
+						<label class="active" for="surName">Фамилия</label>
+					</div>
+
+
+
+					<h4 class="page-sectionTitle col s12 m12 l12">
+						<span>Работа</span>
+					</h4>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.resume.link" id="resumeLink" type="text" class="validate">
+						<label class="active" for="resumeLink">Ссылка на резюме</label>
+					</div>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.resume.title" id="resumeTitle" type="text" class="validate">
+						<label class="active" for="resumeTitle">Заголовок к ссылке</label>
+					</div>
+
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.company" id="_company" type="text" class="validate">
+						<label class="active" for="_company">Работаю в компании</label>
+					</div>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.position" id="_position" type="text" class="validate">
+						<label class="active" for="_position">Должность</label>
+					</div>
+
+					<div class="input-field col s12 m12 l12">
+						<input ng-model="skillsString" id="_skills" type="text" class="validate">
+						<label class="active" for="_skills">Навыки (пробел в качестве разделителя)</label>
+					</div>
+
+
+
+					<h4 class="page-sectionTitle col s12 m12 l12">
+						<span>Контакты</span>
+					</h4>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.resume.link" id="resumeLink" type="text" class="validate">
+						<label class="active" for="resumeLink">Ссылка на резюме</label>
+					</div>
 				</div>
 
 				<button ng-click="updateUser(user)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Сохранить</span> </button>
-
-
-				<div ng-if="user.city" class="page-param">
-					<span> Город: </span>
-					<span class="param-value"> {{user.city}} </span>
-				</div>
-
-				<div ng-if="user.job.resume.link" class="page-param">
-					<span> Резюме: </span>
-					<a class="param-value" href="{{user.job.resume.link}}">
-						<span ng-if="user.job.resume.title"> {{user.job.resume.title}} </span>
-						<span ng-if="!user.job.resume.title"> {{user.job.resume.link}} </span>
-					</a>
-				</div>
-				
-				<div ng-if="user.job.company" class="page-param">
-					<span> Компания: </span>
-					<span class="param-value"> {{user.job.company}} </span>
-				</div>
-				
-				<div ng-if="user.job.position" class="page-param">
-					<span> Должность: </span>
-					<span class="param-value"> {{user.job.position}} </span>
-				</div>
-				
-				<div ng-if="user.job.skills[0]" class="page-param">
-					<span> Навыки: </span>
-					<span class="param-value" ng-repeat="skill in user.job.skills">
-						{{skill}} <span ng-if="$index < user.job.skills.length - 1">&#8226;</span>
-					</span>
-				</div>
-
-				<ul class="collapsible clearfix" data-collapsible="expandable">
-				    <li ng-if="user.personalDatails.hobbies[0] || user.personalDatails.birthday">
-						<div class="collapsible-header">
-							<i class="material-icons">more_horiz</i>
-							Подробная информация
-							</div>
-						<div class="collapsible-body">
-							<div ng-if="user.personalDatails.hobbies[0]" class="page-param">
-								<span> Увлечения: </span>
-								<span class="param-value" ng-repeat="skill in user.personalDatails.hobbies">
-									{{skill}}<span class="comaDevider" ng-if="$index < user.personalDatails.hobbies.length - 1">,</span>
-								</span>
-							</div>
-						</div>
-				   </li>
-
-				   <li ng-if="user.aboutMyself">
-						<div class="collapsible-header">
-							<i class="material-icons">person_outline</i> 
-							О себе
-							</div>
-						<div class="collapsible-body">
-							<p>
-								<span>
-									{{user.aboutMyself}}
-								</span>
-							</p>
-						</div>
-				   </li>
-				 </ul>
 
 			</div>
 		</div>

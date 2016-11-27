@@ -18,6 +18,7 @@ let profileController = ($scope, $http, $location, $routeParams, ui) => {
 		})
 		.success((response) => {
 			$scope.user = response;
+			$scope.skillsString = response.job.skills.join(' ');
 		})
 		.error((response) => {
 			console.log('Cannot get post.');
@@ -27,6 +28,7 @@ let profileController = ($scope, $http, $location, $routeParams, ui) => {
 	$scope.getUser();
 
 	$scope.updateUser = (userData) => {
+		if($scope.skillsString) userData.job.skills = $scope.skillsString.split(' ');
 		userData.token = $scope.loggedUser.token;
 		$http({
 	        headers: {"Content-Type": "application/json;charset=utf-8"},

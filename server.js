@@ -199,9 +199,9 @@ db.once('open', () => {
 			if(role === 'admin' || role === 'dataCreator') {
 				User.update({ _id: id }, userData, (err) => {
 					if(err) {
-				  		console.log('/user/:id | PUT | Error was occurred');
-				  		console.log(err.errmsg);
-				  		response.status(403).send(err.errmsg);
+						let msg = err.errmsg + '\n' + '/user/:id | PUT | Error was occurred';
+				  		console.log(msg);
+				  		response.status(403).send(msg);
 					} else {
 						response.status(200).send(id);
 					}

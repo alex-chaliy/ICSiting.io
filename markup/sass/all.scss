@@ -835,12 +835,41 @@ body, html {height: 100%;}
 		margin-bottom: .8em;
 		border-bottom: 1px solid #e5e5e5;
 
-		span {font-size: 1.4em;}
+		span {font-size: 1.4em; line-height: 1em;}
 
 		.material-icons {
 			position: relative;
 			top: .1em;
 			color: $skyBlue;
+		}
+	}
+
+	&-sectionTitle {
+		@extend .upper, .txt-center;
+		margin: 1em 0 .5em;
+		color: $skyBlue;
+
+		span {font-size: 1.5em}
+	}
+
+	&-paramSection {
+		position: relative;
+		padding: .6em 0 .1em;
+		margin: .5em 0 0;
+		border-top: 1px solid #e5e5e5;
+	}
+	&-paramSectionTitle {
+		@extend .txt-semibold;
+		background: #fff;
+		border-radius: 1em;
+		padding: 0 .3em .05em;
+		position: absolute;
+		top: -.7em;
+		left: -.3em;
+
+		span {
+			font-size: .8em;
+			color: #333;
 		}
 	}
 
@@ -861,6 +890,8 @@ body, html {height: 100%;}
 				font-size: inherit;
 			}
 		}
+		.param-value.txt-regular {@extend .txt-regular;}
+
 		a.param-value {	
 			span {color: $skyBlue;}
 		}

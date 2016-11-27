@@ -13,11 +13,15 @@ const UserSchema = new Schema({
 	surName: String,
 	imgUrl: String,
 	city: String,
-	aboutMyself: String,
 	contacts: {
 		skype: String,
 		phone: String,
 		email: String
+	},
+	visibleContacts: {
+		skype: Boolean,
+		phone: Boolean,
+		email: Boolean
 	},
 	job: {
 		resume: {
@@ -38,6 +42,8 @@ const UserSchema = new Schema({
 		university: String,
 		institute: String,
 
+		group_id: String,
+
 		department: String,
 		department_id: String,
 
@@ -51,6 +57,7 @@ const UserSchema = new Schema({
 	registrationDate: { type: Date, default: Date.now },
 
 	personalDatails: {
+		aboutMyself: String,
 		hobbies: [String],
 		birthday: Date
 	}

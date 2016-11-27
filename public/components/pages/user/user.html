@@ -35,7 +35,7 @@
 				</div>
 				
 				<div ng-if="user.job.company" class="page-param">
-					<span> Компания: </span>
+					<span> Работаю в компании: </span>
 					<span class="param-value"> {{user.job.company}} </span>
 				</div>
 				
@@ -52,32 +52,98 @@
 				</div>
 
 				<ul class="collapsible clearfix" data-collapsible="expandable">
-				    <li ng-if="user.personalDatails.hobbies[0] || user.personalDatails.birthday">
-						<div class="collapsible-header">
-							<i class="material-icons">more_horiz</i>
+				    <li>
+						<div class="collapsible-header txt-semibold">
+							<!-- <i class="material-icons">more_horiz</i> -->
 							Подробная информация
-							</div>
-						<div class="collapsible-body">
-							<div ng-if="user.personalDatails.hobbies[0]" class="page-param">
-								<span> Увлечения: </span>
-								<span class="param-value" ng-repeat="skill in user.personalDatails.hobbies">
-									{{skill}}<span class="comaDevider" ng-if="$index < user.personalDatails.hobbies.length - 1">,</span>
-								</span>
-							</div>
 						</div>
-				   </li>
+						<div class="">
+							<div class="page-paramSection" ng-if="user.visibleContacts.skype || user.visibleContacts.phone || user.visibleContacts.email">
+								<h5 class="page-paramSectionTitle"> <span>Контактные данные</span> </h5>
 
-				   <li ng-if="user.aboutMyself">
-						<div class="collapsible-header">
-							<i class="material-icons">person_outline</i> 
-							О себе
+								<div class="page-param" ng-if="user.visibleContacts.skype && user.contacts.skype">
+									<span> Skype: </span>
+									<span class="param-value">
+										{{user.contacts.skype}}
+									</span>
+								</div>
+
+								<div class="page-param" ng-if="user.visibleContacts.phone && user.contacts.phone">
+									<span> Телефон: </span>
+									<span class="param-value">
+										{{user.contacts.phone}}
+									</span>
+								</div>
+
+								<div class="page-param" ng-if="user.visibleContacts.email && user.contacts.email">
+									<span> Почта: </span>
+									<span class="param-value">
+										{{user.contacts.email}}
+									</span>
+								</div>
 							</div>
-						<div class="collapsible-body">
-							<p>
-								<span>
-									{{user.aboutMyself}}
-								</span>
-							</p>
+
+							<div class="page-paramSection" ng-if="user.educations[0]">
+								<h5 class="page-paramSectionTitle"> <span> Образование </span> </h5>
+
+								<div ng-repeat="education in user.educations">
+									<div class="page-param" ng-if="education.status">
+										<span> Статус: </span>
+										<span class="param-value">
+											{{education.status}}
+										</span>
+									</div>
+
+									<div class="page-param" ng-if="education.university">
+										<span> Вуз: </span>
+										<span class="param-value">
+											{{education.university}}
+										</span>
+									</div>
+
+									<div class="page-param" ng-if="education.institute">
+										<span> Институт: </span>
+										<span class="param-value">
+											{{education.institute}}
+										</span>
+									</div>
+
+									<div class="page-param" ng-if="education.department">
+										<span> Специальность, направление: </span>
+										<span class="param-value">
+											{{education.department}}
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="page-paramSection" ng-if="user.visibleContacts.skype || user.visibleContacts.phone || user.visibleContacts.email">
+								<!-- <h5 class="page-paramSectionTitle"> <span> Заголовок секции информации </span> </h5> -->
+
+								<div ng-if="user.personalDatails.hobbies[0]" class="page-param">
+									<span> Увлечения: </span>
+									<span class="param-value" ng-repeat="hobby in user.personalDatails.hobbies">
+										{{hobby}}<span class="comaDevider" ng-if="$index < user.personalDatails.hobbies.length - 1">,</span>
+									</span>
+								</div>
+							</div>
+
+							<div class="page-paramSection" ng-if="user.personalDatails.aboutMyself">
+								<h5 class="page-paramSectionTitle"> <span> О себе</span> </h5>
+
+								<div class="page-param" ng-if="user.visibleContacts.email && user.contacts.email">
+									<span class="param-value txt-regular">
+										{{user.personalDatails.aboutMyself}}
+									</span>
+								</div>
+
+								<div class="page-param" ng-if="user.visibleContacts.email && user.contacts.email">
+									<span class="param-value txt-regular">
+										{{user.personalDatails.aboutMyself}}
+									</span>
+								</div>
+							</div>
+
 						</div>
 				   </li>
 				 </ul>

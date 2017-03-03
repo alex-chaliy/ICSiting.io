@@ -1,0 +1,85 @@
+<title>Мои Настройки</title>
+
+<ng-include class="" src="'components/partials/header.html'"></ng-include>
+
+<div class="container l-950 m-full changeable-onMenuOpen">
+	<br>
+	<div class="actionStatus black-text center-align">{{actionStatus}}</div>
+
+	<div class="page userPage card">
+		<div class="narrowColumnWrapper">
+			<div class="narrowColumn">
+				<a class="page-photo" href="">
+					<img ng-src="{{user.imgUrl}}" alt="">
+				</a>
+			</div>
+		</div>
+
+		<div class="wideColumnWrapper">
+			<div class="wideColumn">
+
+				<h4 class="page-name">
+					<span> {{user.name}} {{user.secondName}} {{user.surName}}
+						<i ng-if="user.verified === true" class="material-icons">verified_user</i>
+					 </span>
+				</h4>
+
+				<div class="row">
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.name" id="_name" type="text" class="validate">
+						<label class="active" for="_name">Имя</label>
+					</div>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.secondName" id="secondName" type="text" class="validate">
+						<label class="active" for="secondName">Отчество</label>
+					</div>
+					<div class="input-field col s8 m8 l8">
+						<input ng-model="user.surName" id="surName" type="text" class="validate">
+						<label class="active" for="surName">Фамилия</label>
+					</div>
+
+
+
+					<h4 class="page-sectionTitle col s12 m12 l12">
+						<span>Работа</span>
+					</h4>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.resume.link" id="resumeLink" type="text" class="validate">
+						<label class="active" for="resumeLink">Ссылка на резюме</label>
+					</div>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.resume.title" id="resumeTitle" type="text" class="validate">
+						<label class="active" for="resumeTitle">Заголовок к ссылке</label>
+					</div>
+
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.company" id="_company" type="text" class="validate">
+						<label class="active" for="_company">Работаю в компании</label>
+					</div>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.position" id="_position" type="text" class="validate">
+						<label class="active" for="_position">Должность</label>
+					</div>
+
+					<div class="input-field col s12 m12 l12">
+						<input ng-model="skillsString" id="_skills" type="text" class="validate">
+						<label class="active" for="_skills">Навыки (пробел в качестве разделителя)</label>
+					</div>
+
+
+
+					<h4 class="page-sectionTitle col s12 m12 l12">
+						<span>Контакты</span>
+					</h4>
+					<div class="input-field col s6 m6 l6">
+						<input ng-model="user.job.resume.link" id="resumeLink" type="text" class="validate">
+						<label class="active" for="resumeLink">Ссылка на резюме</label>
+					</div>
+				</div>
+
+				<button ng-click="updateUser(user)" class="center-fluid btn skyBlue waves-effect waves-light"> <span>Сохранить</span> </button>
+
+			</div>
+		</div>
+	</div>
+</div>

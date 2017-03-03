@@ -39,12 +39,17 @@
 	"name": "Борис",
 	"secondName": "Григорьевич",
 	"surName": "Довженко",
-	"coverImg": "/uploads/img/users/user-1.png",
+	"imgUrl": "/uploads/img/users/user-1.png",
 	"city": "Одесса",
 	"contacts": {
 		"skype": "b.dovjenko",
 		"phone": "+380 (73) 134 1254",
 		"email": "b.dovjenko@gmail.com"
+	},
+	"visibleContacts": {
+		"skype": "true",
+		"phone": "false",
+		"email": "true"
 	},
 	"job": {
 		"resume": {
@@ -63,15 +68,17 @@
 
 	"teacherData": {
 		"subject_ids": [
-			"4a3a1d7b53eae5bb20205d2a"
+			"4a3a1d7b53eae5bb20205d2a",
 			"5a3a1d7b531235bb2075ad7b"
 		],
-		"department_id": "8c3a17db53cc5abb0220153a",
+		"department_id": "8c3a17db53cc5abb0220153a"
 	},
 	"educations": [{
 		"status": "student",
 		"university": "Водный Университет",
 		"institute": "Институт Кибернетики и Автоматизации",
+
+		"group_id": "e98g3sdg4sgh5g8d8",
 
 		"department": "Название Кафедры",
 		"department_id": "8c3a17db53cc5abb0220153a",
@@ -85,12 +92,13 @@
 	"registrationDate": "2016-11-01T22:13:36+02:00",
 
 	"personalDatails": {
+		"aboutMyself": "Lorem ipsum dolor imet...",
 		"hobbies" : [ 
             "программирование", 
             "web разработка", 
             "рисование"
         ],
-		"birthday": "1996-21-09T22:13:36+02:00"
+		"birthday": "1996-02-22T22:13:36+02:00"
 	}
 }
 ```

@@ -6,6 +6,8 @@
 
 ## Параметры
 - token - ключ авторизованного пользователя;
+- id - id пользователя; id нужен для определения создателя данных;
+
 - UserEntity - ссылка на объект;
     этот объект является mongoose-моделью и содержит
     методы mongoose'а для проведения операций над пользователем в MongoDB,
@@ -22,8 +24,8 @@ let params = {
 	token: '137ba15ee22037b539c5a1f01321539c59',
 	UserEntity: User
 }
-defineUserRole(params, (role, user) => {
-	if(role === 'admin' || user._id === userId) {
+defineUserRole(params, (role) => {
+	if(role === 'admin' || role === 'dataCreator') {
 		// do something
 	}
 });

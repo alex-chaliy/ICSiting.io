@@ -28,8 +28,8 @@ body, html {height: 100%;}
 	.header {
 		background: $skyBlue !important;
 		text-shadow: none !important;
-		.nav-menu__item span {color: #eee !important;}
-		.nav-menu__item:hover span {color: #fff !important;}
+		.nav-menu__item span {color: #eee;}
+		.nav-menu__item:hover span {color: #fff;}
 	}
 }
 .header {
@@ -253,6 +253,20 @@ body, html {height: 100%;}
 			padding: 5px 13px;
 			margin-bottom: 15px;
 		}
+	}
+
+	.nav-menu__item.item-loggedUser {
+		@extend .reset-for-btn;
+		
+		//border: 1px solid #eee !important;
+
+		.dropdownContent {
+			display: block;
+			width: 10em;
+			right: auto;
+			left: -3.0em;
+		}
+		.dropdownContent.active {top: 100% !important;}
 	}
 /* end nav-menu */
 
@@ -492,6 +506,7 @@ body, html {height: 100%;}
 .card-controls-btn {
 	@extend .main-btn;
 	width: 100%;
+	width: calc(100% + 1px);
 	border-radius: 0;
 	color: #fff;
 	float: left;
@@ -705,12 +720,41 @@ body, html {height: 100%;}
 		margin-bottom: .8em;
 		border-bottom: 1px solid #e5e5e5;
 
-		span {font-size: 1.4em;}
+		span {font-size: 1.4em; line-height: 1em;}
 
 		.material-icons {
 			position: relative;
 			top: .1em;
 			color: $skyBlue;
+		}
+	}
+
+	&-sectionTitle {
+		@extend .upper, .txt-center;
+		margin: 1em 0 .5em;
+		color: $skyBlue;
+
+		span {font-size: 1.5em}
+	}
+
+	&-paramSection {
+		position: relative;
+		padding: .6em 0 .1em;
+		margin: .5em 0 0;
+		border-top: 1px solid #e5e5e5;
+	}
+	&-paramSectionTitle {
+		@extend .txt-semibold;
+		background: #fff;
+		border-radius: 1em;
+		padding: 0 .3em .05em;
+		position: absolute;
+		top: -.7em;
+		left: -.3em;
+
+		span {
+			font-size: .8em;
+			color: #333;
 		}
 	}
 
@@ -731,6 +775,8 @@ body, html {height: 100%;}
 				font-size: inherit;
 			}
 		}
+		.param-value.txt-regular {@extend .txt-regular;}
+
 		a.param-value {	
 			span {color: $skyBlue;}
 		}
@@ -826,13 +872,40 @@ body, html {height: 100%;}
 	margin: 0 !important;
 	font-size: 1em;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+
+	ul, li, span {
+		font-size: 1em;
+		color: $skyBlue !important;
+		text-transform: none;
+		width: 100%;
+		display: inline-block;
+	}
+	span {font-size: .8em;}
 }
+
 .dropdownContent.active {
 	opacity: 1;
 	top: -3px;
 	height: auto;
 	width: auto;
 	padding: 0 .5em;
+}
+.dropdownContent--top.active {
+	top: -100%;
+	top: calc(-100% - 5px);
+}
+.dropdownContent--bottom.active {
+	top: 100%;
+	top: calc(100% + 5px);
+}
+.dropdownContent--left.active {
+	right: 100%;
+	right: calc(100% + 5px);
+}
+.dropdownContent--right.active {
+	right: auto;
+	left: 100%;
+	left: calc(100% + 5px);
 }
 
 .dropdownContent li {

@@ -184,29 +184,32 @@ db.once('open', () => {
 	});
 
 	app.put('/user/:id', (request, response) => {
-		let id = request.params.id;
-		let _token = request.body.token;
-		request.body.token = undefined;
-		let updateData = request.body;
+		let id = request.params.id || '';
+		let token = request.body.token || '';
+		let userData = request.body;
+		delete userData._id;
+		delete userData.token;
 
-		authCheck(_token, (accessType) => {
-
-			console.log(accessType);
-			if((accessType == 'admin') || (accessType == 'currentUser')){
-
-				User.update({ _id: id }, updateData, (err) => {
+		let params = {
+			token: token,
+			id: id,
+			UserEntity: User
+		}
+		defineUserRole(params, (role) => {
+			if(role === 'admin' || role === 'dataCreator') {
+				User.update({ _id: id }, userData, (err) => {
 					if(err) {
-				  		console.log('/user/:id | PUT | Error was occurred');
-				  		console.log(err.errmsg);
-				  		response.send(err.errmsg);
+						let msg = err.errmsg + '\n' + '/user/:id | PUT | Error was occurred';
+				  		console.log(msg);
+				  		response.status(403).send(msg);
 					} else {
-						response.send(id);
+						response.status(200).send(id);
 					}
 				});
 			} else {
-				response.send('Wrong access rights');
+				response.status(403).send('Update access forbidden.');
 			}
-		}, id);
+		});
 	});
 
 	app.delete('/user/:id', (request, response) => {
@@ -245,7 +248,7 @@ db.once('open', () => {
 			token: token,
 			UserEntity: User
 		}
-		defineUserRole(params, (role, user) => {
+		defineUserRole(params, (role) => {
 			if(role === 'admin' || role === 'moderator') {
 				let post = new Post(postData);
 				post.save((err, doc) => {
@@ -336,7 +339,7 @@ db.once('open', () => {
 			token: token,
 			UserEntity: User
 		}
-		defineUserRole(params, (role, user) => {
+		defineUserRole(params, (role) => {
 			if(role === 'admin' || role === 'moderator') {
 				Post.update({ _id: id }, postData, (err) => {
 					if(err) {
@@ -361,7 +364,7 @@ db.once('open', () => {
 			token: token,
 			UserEntity: User
 		}
-		defineUserRole(params, (role, user) => {
+		defineUserRole(params, (role) => {
 			if(role === 'admin' || role === 'moderator') {
 				Post.remove({ _id: id }, (err) => {
 					if (err) {

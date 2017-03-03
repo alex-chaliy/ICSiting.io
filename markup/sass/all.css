@@ -1,9 +1,9 @@
-.reset-for-btn, .main-btn, .card-controls-btn, .nav-menu__mob-header .menu-toggler, .nav-menu__mob-header .arrow-right, .authorBlock-moreBtn, .btnComments {
+.reset-for-btn, .main-btn, .card-controls-btn, .nav-menu__mob-header .menu-toggler, .nav-menu__mob-header .arrow-right, .nav-menu__item.item-loggedUser, .authorBlock-moreBtn, .btnComments {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer; }
-  .reset-for-btn:focus, .main-btn:focus, .card-controls-btn:focus, .nav-menu__mob-header .menu-toggler:focus, .nav-menu__mob-header .arrow-right:focus, .authorBlock-moreBtn:focus, .btnComments:focus {
+  .reset-for-btn:focus, .main-btn:focus, .card-controls-btn:focus, .nav-menu__mob-header .menu-toggler:focus, .nav-menu__mob-header .arrow-right:focus, .nav-menu__item.item-loggedUser:focus, .authorBlock-moreBtn:focus, .btnComments:focus {
     background: transparent; }
 
 ._center, .homeSlider-itemContent .valign, .homeSlider-btn, .post .label, .page {
@@ -15,7 +15,7 @@
   margin-right: auto;
   display: table; }
 
-.upper {
+.upper, .page-sectionTitle {
   text-transform: uppercase; }
 
 .lower {
@@ -24,7 +24,7 @@
 .capitalize {
   text-transform: capitalize; }
 
-.txt-center, .main-title, .main-subtitle, .main-btn, .card-controls-btn, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .homeSlider-event, .post-title, .postPage-title {
+.txt-center, .main-title, .main-subtitle, .main-btn, .card-controls-btn, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .homeSlider-event, .post-title, .page-sectionTitle, .postPage-title {
   text-align: center; }
 
 .txt-shadow, .main-title, .main-subtitle {
@@ -33,10 +33,10 @@
 .txt-light {
   font-weight: 300; }
 
-.txt-regular, .event-dateAndPlace {
+.txt-regular, .event-dateAndPlace, .page-param .param-value.txt-regular {
   font-weight: 400; }
 
-.txt-semibold, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .post-title, .card-headerTitle, .userPreview-param .param-value, .page-name, .page-param .param-value, .page-title, .postPage-title {
+.txt-semibold, .homeSlider-title, .homeSlider-subTitle, .homeSlider-keyWordTitle, .post-title, .card-headerTitle, .userPreview-param .param-value, .page-name, .page-paramSectionTitle, .page-param .param-value, .page-title, .postPage-title {
   font-weight: 500; }
 
 .txt-bold, .main-btn, .card-controls-btn, .homeSlider-btn, .homeSlider-eventLink {
@@ -131,9 +131,9 @@ body, html {
   background: #0091ea !important;
   text-shadow: none !important; }
   .skyBlue .header .nav-menu__item span {
-    color: #eee !important; }
+    color: #eee; }
   .skyBlue .header .nav-menu__item:hover span {
-    color: #fff !important; }
+    color: #fff; }
 
 .header {
   padding: .4em .4em 0;
@@ -327,6 +327,14 @@ body, html {
     display: block;
     padding: 5px 13px;
     margin-bottom: 15px; } }
+.nav-menu__item.item-loggedUser .dropdownContent {
+  display: block;
+  width: 10em;
+  right: auto;
+  left: -3.0em; }
+.nav-menu__item.item-loggedUser .dropdownContent.active {
+  top: 100% !important; }
+
 /* end nav-menu */
 .homeSliderWrapper {
   width: 100%;
@@ -513,6 +521,7 @@ body, html {
 
 .card-controls-btn {
   width: 100%;
+  width: calc(100% + 1px);
   border-radius: 0;
   color: #fff;
   float: left; }
@@ -679,11 +688,32 @@ body, html {
     margin-bottom: .8em;
     border-bottom: 1px solid #e5e5e5; }
     .page-name span {
-      font-size: 1.4em; }
+      font-size: 1.4em;
+      line-height: 1em; }
     .page-name .material-icons {
       position: relative;
       top: .1em;
       color: #0091ea; }
+  .page-sectionTitle {
+    margin: 1em 0 .5em;
+    color: #0091ea; }
+    .page-sectionTitle span {
+      font-size: 1.5em; }
+  .page-paramSection {
+    position: relative;
+    padding: .6em 0 .1em;
+    margin: .5em 0 0;
+    border-top: 1px solid #e5e5e5; }
+  .page-paramSectionTitle {
+    background: #fff;
+    border-radius: 1em;
+    padding: 0 .3em .05em;
+    position: absolute;
+    top: -.7em;
+    left: -.3em; }
+    .page-paramSectionTitle span {
+      font-size: .8em;
+      color: #333; }
   .page-param {
     line-height: 1em;
     padding-bottom: .4em; }
@@ -773,6 +803,14 @@ body, html {
   margin: 0 !important;
   font-size: 1em;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+  .dropdownContent ul, .dropdownContent li, .dropdownContent span {
+    font-size: 1em;
+    color: #0091ea !important;
+    text-transform: none;
+    width: 100%;
+    display: inline-block; }
+  .dropdownContent span {
+    font-size: .8em; }
 
 .dropdownContent.active {
   opacity: 1;
@@ -780,6 +818,23 @@ body, html {
   height: auto;
   width: auto;
   padding: 0 .5em; }
+
+.dropdownContent--top.active {
+  top: -100%;
+  top: calc(-100% - 5px); }
+
+.dropdownContent--bottom.active {
+  top: 100%;
+  top: calc(100% + 5px); }
+
+.dropdownContent--left.active {
+  right: 100%;
+  right: calc(100% + 5px); }
+
+.dropdownContent--right.active {
+  right: auto;
+  left: 100%;
+  left: calc(100% + 5px); }
 
 .dropdownContent li {
   padding: .2em 0;

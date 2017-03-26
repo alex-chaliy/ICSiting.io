@@ -10,7 +10,7 @@ var Config = {
 		db: {
 			adress: 'localhost',
 			port: '27017',
-			name: 'test'
+			name: 'ics_soc_network'
 		}
 	},
 	production: {
@@ -22,7 +22,7 @@ var Config = {
 		db: {
 			adress: 'site.com',
 			port: '27017',
-			name: 'ics'
+			name: 'ics_soc_network'
 		}
 	}
 };
